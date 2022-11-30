@@ -2,8 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import VerkaufView from '../views/VerkaufView.vue'
 import HilfeView from '../views/HilfeView.vue'
-import NeuesFahrradView from "@/views/NeuesFahrradView";
-
+import NeuesFahrradView from '@/views/NeuesFahrradView'
 
 const routes = [
   {

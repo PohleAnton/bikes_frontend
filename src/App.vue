@@ -7,9 +7,7 @@
 import Navbar from '@/components/Navbar'
 
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
   name: 'App',
-  // eslint-disable-next-line vue/no-unused-components
   components: { Navbar }
 }
 </script>

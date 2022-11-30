@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "NeuesFahrradView"
+  name: 'NeuesFahrradView'
 }
 </script>
 
