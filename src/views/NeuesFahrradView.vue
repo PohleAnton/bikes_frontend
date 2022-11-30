@@ -1,10 +1,12 @@
 <template>
-<h1>Bikes</h1>
+  <h1>
+    Neues Angebot erstellen
+  </h1>
 </template>
 
 <script>
 export default {
-  name: 'BikesView'
+  name: "NeuesFahrradView"
 }
 </script>
 

@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView'
-import BikesView from '@/views/BikesView'
+import VerkaufView from '../views/VerkaufView.vue'
+import HilfeView from '../views/HilfeView.vue'
+import NeuesFahrradView from "@/views/NeuesFahrradView";
+
 
 const routes = [
   {
@@ -10,14 +12,19 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
-    component: AboutView
+    path: '/verkauf',
+    name: 'verkauf',
+    component: VerkaufView
   },
   {
-    path: '/bikes',
-    name: 'bikes',
-    component: BikesView
+    path: '/verkauf/neues_fahrrad',
+    name: 'neues_fahrrad',
+    component: NeuesFahrradView
+  },
+  {
+    path: '/hilfe',
+    name: 'hilfe',
+    component: HilfeView
   }
 ]
 
