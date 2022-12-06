@@ -6,12 +6,20 @@
       <div class="card h-auto" style="width: 18rem; float:left;">
         <img :src="getPicture(fahrrad)" class="card-img-top" :alt="fahrrad.beschreibungAbnutzung + fahrrad.price">
         <div class="card-body">
-          <h5 class="card-title">{{ fahrrad.beschreibungAbnutzung }} {{fahrrad.price}}</h5>
-          <p class="card-text">{{ fahrrad.beschreibungAbnutzung }} {{fahrrad.price}}</p>
+          <h5 class="card-title">{{ fahrrad.abnutzungsgrad }} {{fahrrad.price}}</h5>
+          <p class="card-text">{{ fahrrad.abnutzungsgrad }} {{fahrrad.price}}</p>
           <a href="#" class="btn btn-primary">Angebot ansehen</a>
         </div>
       </div>
+     </div>
+    <div class="col" v-for="person in persons" :key="person.id">
+    <div class="card h-auto" style="width: 18rem; float:left;">
+      <img :src="getBild(person)" class="card-img-top" :alt="person.firstName + person.username">
+      <h5 class="card-title">{{ person.firstName }} {{person.username}}</h5>
+      <p class="card-text">{{ person.firstName }} {{person.username}}</p>
+      <a href="#" class="btn btn-primary">Angebot ansehen</a>
     </div>
+      </div>
   </div>
 
   <!--    <div class="card" style="width: 18rem; float:left;">
@@ -59,20 +67,11 @@ export default {
   name: 'HomeView',
   data() {
     return {
-      persons: [
-        {
-          id: 1,
-          username: 'titties',
-          firstName: 'Eric',
-          lastName: 'Cartman',
-          mailaddress: 'cartman@topspin.de'
-        }
-      ],
+      persons: [],
       bikes: [
         {
           id: 1,
           kategorie: 'SONSTIGE',
-          beschreibungAbnutzung: 'topspin',
           abnutzungsgrad: 'NEU',
           farbe: 'MIXED',
           price: 10.00,
@@ -81,7 +80,6 @@ export default {
         {
           id: 2,
           kategorie: 'KINDERFAHRRAD',
-          beschreibungAbnutzung: 'Berlit. Der reine SChrott',
           abnutzungsgrad: 'STARKE_ABNUTZUNG',
           farbe: 'SCHWARZ',
           price: 1,
@@ -89,6 +87,21 @@ export default {
         }
       ]
     }
+  },
+  mounted () {
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL +'/api/v1/person'
+    const requestOptions = {
+         method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch('http://localhost:8080/api/v1/person', requestOptions)
+      .then(response => response.json())
+      .then(result =>result.forEach(person =>{
+        this.persons.push(person)
+      }))
+      .catch(error => console.log('error', error));
+
   },
   methods: {
     getPicture(fahrrad) {
@@ -99,6 +112,12 @@ export default {
         return require("../assets/berlit.png")
       }
       else return require("../assets/city.png")
+    },
+    getBild(person){
+      if(person.username==='top'){
+        return require("../assets/dude.png")
+      }
+      else return require("../assets/gollum.png")
     }
   }
 }
