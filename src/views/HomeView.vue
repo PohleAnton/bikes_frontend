@@ -2,61 +2,17 @@
   <h1>Willkommen zu BikeBay!</h1>
     <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
   <div class="container-fluid">
-    <div class="col" v-for="fahrrad in bikes" :key="fahrrad.id">
-      <div class="card h-auto" style="width: 18rem; float:left;">
-        <img :src="getPicture(fahrrad)" class="card-img-top" :alt="fahrrad.beschreibungAbnutzung + fahrrad.price">
-        <div class="card-body">
-          <h5 class="card-title">{{ fahrrad.abnutzungsgrad }} {{fahrrad.price}}</h5>
-          <p class="card-text">{{ fahrrad.abnutzungsgrad }} {{fahrrad.price}}</p>
-          <a href="#" class="btn btn-primary">Angebot ansehen</a>
-        </div>
-      </div>
-     </div>
-    <div class="col" v-for="person in persons" :key="person.id">
+    <div class="col" v-for="bike in bikes" :key="bike.id">
     <div class="card h-auto" style="width: 18rem; float:left;">
-      <img :src="getBild(person)" class="card-img-top" :alt="person.firstName + person.username">
-      <h5 class="card-title">{{ person.firstName }} {{person.username}}</h5>
-      <p class="card-text">{{ person.firstName }} {{person.username}}</p>
+      <img :src="bike.bildUrl" class="card-img-top" :alt="bike.kureBeschreibung">
+      <h5 class="card-title">{{ bike.kategorie }}</h5>
+      <p class="card-text">{{ bike.farbe }} {{bike.kurzeBeschreibung}}</p>
       <a href="#" class="btn btn-primary">Angebot ansehen</a>
     </div>
       </div>
   </div>
 
-  <!--    <div class="card" style="width: 18rem; float:left;">
-     <img src="../assets/old.png" class="card-img-top" alt="...">
-     <div class="card-body">
-       <h5 class="card-title">GTXR09</h5>
-       <p class="card-text">Ein Sportfahrrad mit perfektem Topspin.</p>
-       <a href="#" class="btn btn-primary">Angebot ansehen</a>
-     </div>
-   </div>
-   <div class="card" style="width: 18rem; float:left;">
-     <img src="../assets/berlit.png" class="card-img-top" alt="...">
-     <div class="card-body">
-       <h5 class="card-title">Mountainbike-3GXs</h5>
-       <p class="card-text">Gebrauchtes Mountainbike, Qualität: Berlit.</p>
-       <a href="#" class="btn btn-primary">Angebot ansehen</a>
-     </div>
-   </div>
-   <div class="card" style="width: 18rem;">
-     <img src="../assets/city.png" class="card-img-top" alt="...">
-     <div class="card-body">
-       <h5 class="card-title">Citybike-Flups</h5>
-       <p class="card-text">Du möchtest entspannt in der Stadt rumcruisen? Perfekt!.</p>
-       <a href="#" class="btn btn-primary">Angebot ansehen</a>
-     </div>
-   </div>-->
-  <div>
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-      </ul>
-    </nav>
-  </div>
+
 </template>
 
 <script>
@@ -68,41 +24,25 @@ export default {
   data() {
     return {
       persons: [],
-      bikes: [
-        {
-          id: 1,
-          kategorie: 'SONSTIGE',
-          abnutzungsgrad: 'NEU',
-          farbe: 'MIXED',
-          price: 10.00,
-          eigentuemer_id: 1
-        },
-        {
-          id: 2,
-          kategorie: 'KINDERFAHRRAD',
-          abnutzungsgrad: 'STARKE_ABNUTZUNG',
-          farbe: 'SCHWARZ',
-          price: 1,
-          eigentuemer_id: 1
-        }
-      ]
+      bikes: []
     }
   },
   mounted () {
-    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL +'/api/v1/person'
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL +'api/v1/person'
     const requestOptions = {
          method: 'GET',
       redirect: 'follow'
     };
 
-    fetch('http://localhost:8080/api/v1/person', requestOptions)
+    fetch('http://localhost:8080/api/v1/fahrrad', requestOptions)
       .then(response => response.json())
-      .then(result =>result.forEach(person =>{
-        this.persons.push(person)
+      .then(result =>result.forEach(bike =>{
+        this.bikes.push(bike)
       }))
       .catch(error => console.log('error', error));
 
   },
+
   methods: {
     getPicture(fahrrad) {
       if(fahrrad.abnutzungsgrad === 'NEU' ) {
