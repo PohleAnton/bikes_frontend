@@ -7,7 +7,9 @@
       <img :src="bike.bildUrl" class="card-img-top" :alt="bike.kureBeschreibung">
       <h5 class="card-title">{{ bike.kategorie }}</h5>
       <p class="card-text">{{ bike.farbe }} {{bike.kurzeBeschreibung}}</p>
-      <a href="#" class="btn btn-primary">Angebot ansehen</a>
+      <router-link class="nav-link" to="{name: 'BikeView', data: {id: bike.id} }">
+        <button type="button" class="btn btn-primary">Angebot ansehen</button>
+      </router-link>
     </div>
       </div>
   </div>

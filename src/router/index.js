@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import VerkaufView from '../views/VerkaufView.vue'
 import HilfeView from '../views/HilfeView.vue'
 import NeuesFahrradView from '@/views/NeuesFahrradView'
+import BikeView from '@/views/BikeView'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/hilfe',
     name: 'hilfe',
     component: HilfeView
+  },
+  {
+    path: '/fahrrad',
+    name: 'fahrrad',
+    component: BikeView
   }
 ]
 
