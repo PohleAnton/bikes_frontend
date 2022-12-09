@@ -2,13 +2,18 @@
   <h1>Willkommen zu BikeBay!</h1>
     <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
   <div class="container-fluid">
-    <div class="col" v-for="bike in bikes" :key="bike.id">
-    <div class="card h-auto" style="width: 18rem; float:left;">
-      <img :src="bike.bildUrl" class="card-img-top" :alt="bike.kureBeschreibung">
-      <h5 class="card-title">{{ bike.kategorie }}</h5>
-      <p class="card-text">{{ bike.farbe }} {{bike.kurzeBeschreibung}}</p>
-      <router-link class="nav-link" to="{name: 'BikeView', data: {id: bike.id} }">
-        <button type="button" class="btn btn-primary">Angebot ansehen</button>
+    <div class="col" v-for="rad in bikes" :key="rad.id">
+      <Bike id="rad.id" />
+     <div class="card h-auto" style="width: 18rem; float:left;">
+
+
+
+      <img :src="rad.bildUrl" class="card-img-top" :alt="rad.kureBeschreibung">
+      <h5 class="card-title">{{ rad.kategorie }}</h5>
+      <p class="card-text">{{ rad.farbe }} {{rad.kurzeBeschreibung}}</p>
+
+      <router-link class="nav-link" to="/einkauf/fahrrad">
+        <button type="button" class="btn btn-primary" > Angebot ansehen</button>
       </router-link>
     </div>
       </div>
@@ -23,14 +28,16 @@ import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'HomeView',
+
   data() {
     return {
       persons: [],
-      bikes: []
+      bikes: [],
+      bike: Object,
     }
   },
   mounted () {
-    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL +'api/v1/person'
+
     const requestOptions = {
          method: 'GET',
       redirect: 'follow'
@@ -55,6 +62,7 @@ export default {
       }
       else return require("../assets/city.png")
     },
+
     getBild(person){
       if(person.username==='top'){
         return require("../assets/dude.png")

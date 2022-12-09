@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import VerkaufView from '../views/VerkaufView.vue'
 import HilfeView from '../views/HilfeView.vue'
 import NeuesFahrradView from '@/views/NeuesFahrradView'
-import BikeView from '@/views/BikeView'
+import BikeView from '@/components/Bike'
 
 const routes = [
   {
@@ -27,7 +27,7 @@ const routes = [
     component: HilfeView
   },
   {
-    path: '/fahrrad',
+    path: '/einkauf/fahrrad',
     name: 'fahrrad',
     component: BikeView
   }

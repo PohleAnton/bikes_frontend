@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'PersonsView'
+  name: 'HileView'
 }
 </script>
 
