@@ -1,31 +1,25 @@
 <template>
-  <h1>Willkommen zu BikeBay!</h1>
+  <h1>{{ bikes.length }}</h1>
     <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
-  <div class="container-fluid">
-    <div class="col" v-for="rad in bikes" :key="rad.id">
-      <Bike id="rad.id" />
-     <div class="card h-auto" style="width: 18rem; float:left;">
 
+  <div class="col" v-for="rad in bikes" :key="rad.id" >
 
-
-      <img :src="rad.bildUrl" class="card-img-top" :alt="rad.kureBeschreibung">
+    <div class="card h-auto" style="width: 18rem; float:left;">
+      <img :src="rad.bildUrl" class="card-img-top" :alt="rad.kureBeschreibung" >
       <h5 class="card-title">{{ rad.kategorie }}</h5>
-      <p class="card-text">{{ rad.farbe }} {{rad.kurzeBeschreibung}}</p>
+      <p class="card-text">{{ rad.id }} {{rad.kurzeBeschreibung}} </p>
 
       <router-link class="nav-link" to="/einkauf/fahrrad">
-        <button type="button" class="btn btn-primary" > Angebot ansehen</button>
+
+        <button type="button" @click="store.id=rad.id" class="btn btn-primary" >Angebot ansehen</button>
       </router-link>
     </div>
-      </div>
   </div>
-
-
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
+import { store } from '@/views/store'
 export default {
   name: 'HomeView',
 
@@ -33,7 +27,7 @@ export default {
     return {
       persons: [],
       bikes: [],
-      bike: Object,
+      store
     }
   },
   mounted () {
@@ -51,24 +45,5 @@ export default {
       .catch(error => console.log('error', error));
 
   },
-
-  methods: {
-    getPicture(fahrrad) {
-      if(fahrrad.abnutzungsgrad === 'NEU' ) {
-        return require("../assets/old.png")
-      }
-      if(fahrrad.abnutzungsgrad === 'STARKE_ABNUTZUNG') {
-        return require("../assets/berlit.png")
-      }
-      else return require("../assets/city.png")
-    },
-
-    getBild(person){
-      if(person.username==='top'){
-        return require("../assets/dude.png")
-      }
-      else return require("../assets/gollum.png")
-    }
-  }
 }
 </script>

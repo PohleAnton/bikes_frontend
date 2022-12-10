@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'HileView'
+  name: 'HilfeView'
 }
 </script>
 
