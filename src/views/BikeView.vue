@@ -1,7 +1,10 @@
 <template>
+  <button type="button"  class="btn btn-primary" >{{  }}</button>
+  <p >Das ausgewaehlte Fahrrad ist: {{bike.id}} </p>
 
-  <p >Das ausgewaehlte Fahrrad ist: {{bike}}</p>
+  <a class="mailto" href="mailto:{{eigentuemer.mailaddress}}">Kontakt aufnehmen</a>
   <p>Jetzt muss sich nur noch "irgendjemand" um das Design kümmern...</p>
+
 
 
 </template>
@@ -9,13 +12,14 @@
 <script>
 
 import { store } from './store.js'
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'BikeView',
 data() {
     return {
       bike: Object,
-      eigentuemer:Object,
+      eigentuemer: Object,
       store
     }
   },
@@ -31,7 +35,7 @@ data() {
       .then(response => response.json()).then(response=>this.bike=response)
       .catch(error => console.log('error', error));
 
-    fetch('http://localhost:8080/api/v1/person/'+this.bike.eigentuemer, requestOptions)
+    fetch('http://localhost:8080/api/v1/person/'+store.eigId, requestOptions)
       .then(response => response.json()).then(response=>this.eigentuemer=response)
       .catch(error => console.log('error', error));
 

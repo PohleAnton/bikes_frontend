@@ -1,9 +1,8 @@
 <template>
   <h1>{{ bikes.length }}</h1>
-    <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
+  <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
 
   <div class="col" v-for="rad in bikes" :key="rad.id" >
-
     <div class="card h-auto" style="width: 18rem; float:left;">
       <img :src="rad.bildUrl" class="card-img-top" :alt="rad.kureBeschreibung" >
       <h5 class="card-title">{{ rad.kategorie }}</h5>
@@ -11,7 +10,7 @@
 
       <router-link class="nav-link" to="/einkauf/fahrrad">
 
-        <button type="button" @click="store.id=rad.id" class="btn btn-primary" >Angebot ansehen</button>
+        <button type="button" @click="store.id=rad.id; store.eigId=rad.eigentuemer.id" class="btn btn-primary" >Angebot ansehen</button>
       </router-link>
     </div>
   </div>
@@ -20,9 +19,9 @@
 <script>
 
 import { store } from '@/views/store'
+
 export default {
   name: 'HomeView',
-
   data() {
     return {
       persons: [],
