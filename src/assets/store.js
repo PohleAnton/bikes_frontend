@@ -2,6 +2,6 @@ import { reactive } from 'vue'
 
 
 export const store = reactive ({
-eigId:Number,
+  eigId: 0,
   bike:Object
 })

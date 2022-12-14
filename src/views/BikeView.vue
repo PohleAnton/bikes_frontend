@@ -16,7 +16,7 @@
 
 <script>
 
-import { store } from './store.js'
+import { store } from '@/assets/store'
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
