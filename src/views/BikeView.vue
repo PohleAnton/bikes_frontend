@@ -31,13 +31,14 @@ data() {
     };
 
 
+    this.bike=store.bike;
 
     fetch('http://localhost:8080/api/v1/person/'+store.eigId, requestOptions)
       .then(response => response.json()).then(response=>this.eigentuemer=response)
       .catch(error => console.log('error', error));
 
 
-      this.bike=store.bike;
+
 
 
 
