@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "16,x",
-    "npm": "9.x"
+    "node": "16.11.0",
+    "npm": "9.1.1"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -32,5 +32,6 @@
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "jest": "^27.0.5"
+
   }
 }
