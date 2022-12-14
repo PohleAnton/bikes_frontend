@@ -10,7 +10,7 @@
 
       <router-link class="nav-link" to="/einkauf/fahrrad">
 
-        <button type="button" @click="store.id=rad.id; store.eigId=rad.eigentuemer.id" class="btn btn-primary" >Angebot ansehen</button>
+        <button type="button" @click="store.bike=rad" class="btn btn-primary" >Angebot ansehen</button>
       </router-link>
     </div>
   </div>

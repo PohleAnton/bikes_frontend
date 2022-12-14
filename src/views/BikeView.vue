@@ -1,8 +1,8 @@
 <template>
-  <button type="button"  class="btn btn-primary" >{{  }}</button>
-  <p >Das ausgewaehlte Fahrrad ist: {{bike.id}} </p>
-
-  <a class="mailto" href="mailto:{{eigentuemer.mailaddress}}">Kontakt aufnehmen</a>
+  <p>Das ausgewaehlte Fahrrad ist: {{bike.id}} </p>
+  <a :href="'mailto:' +eigentuemer.mailaddress">
+  <button class="btn btn-primary">Kontakt aufnehmen</button>
+  </a>
   <p>Jetzt muss sich nur noch "irgendjemand" um das Design kümmern...</p>
 
 
@@ -20,7 +20,7 @@ data() {
     return {
       bike: Object,
       eigentuemer: Object,
-      store
+      store,
     }
   },
   mounted () {
@@ -31,16 +31,23 @@ data() {
     };
 
 
-    fetch('http://localhost:8080/api/v1/fahrrad/'+store.id, requestOptions)
-      .then(response => response.json()).then(response=>this.bike=response)
-      .catch(error => console.log('error', error));
 
     fetch('http://localhost:8080/api/v1/person/'+store.eigId, requestOptions)
       .then(response => response.json()).then(response=>this.eigentuemer=response)
       .catch(error => console.log('error', error));
 
 
+      this.bike=store.bike;
+
+
+
   },
+  methods: {
+    mail() {
+      return 'mailto:'+this.eigentuemer.mailaddress
+
+    }
+  }
 }
 </script>
 
