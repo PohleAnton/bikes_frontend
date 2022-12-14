@@ -4,7 +4,7 @@
 
   <div class="col" v-for="rad in bikes" :key="rad.id" >
     <div class="card h-auto" style="width: 18rem; float:left;">
-      <img :src="rad.bildUrl" class="card-img-top" :alt="rad.kureBeschreibung" >
+      <img :src="rad.bildUrl" class="card-img-top" :alt="rad.kurzeBeschreibung" >
       <h5 class="card-title">{{ rad.kategorie }}</h5>
       <p class="card-text">{{ rad.id }} {{rad.kurzeBeschreibung}} </p>
 

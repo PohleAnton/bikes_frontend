@@ -1,6 +1,6 @@
 <template>
   <p>Das ausgewaehlte Fahrrad ist: {{bike.id}} </p>
-  <a :href="'mailto:' +eigentuemer.mailaddress">
+  <a :href="'mailto:' +eigentuemer.mailaddress +'?subject=deine Anzeige auf BikeBay: ' + bike.kurzeBeschreibung">
   <button class="btn btn-primary">Kontakt aufnehmen</button>
   </a>
   <p>Jetzt muss sich nur noch "irgendjemand" um das Design kümmern...</p>
