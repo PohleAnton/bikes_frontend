@@ -1,8 +1,13 @@
 <template>
   <p>Das ausgewaehlte Fahrrad ist: {{bike.id}} </p>
+<!--  das öffnet den Standard Email Client und setzt in den Betreff die kurze Beschreibung ein. Ich werde dem Bike mal doch
+  eine lange Beschreibung geben, dann könnte man die speziell auf dieser Seite anzeigen. Wider meinte außerdem in der
+  Vorlesung, dass es für Input Control Zusatzpunkte gibt - vielleicht kann man beim anlegne die Zeichenzahl für die kurze
+  Beschreibung einschränken?-->
   <a :href="'mailto:' +eigentuemer.mailaddress +'?subject=deine Anzeige auf BikeBay: ' + bike.kurzeBeschreibung">
   <button class="btn btn-primary">Kontakt aufnehmen</button>
   </a>
+  <p>Hier könnte die ausführliche Beschreibung stehen: {{bike.langeBeschreibung}}</p>
   <p>Jetzt muss sich nur noch "irgendjemand" um das Design kümmern...</p>
 
 
