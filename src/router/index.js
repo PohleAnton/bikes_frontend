@@ -4,12 +4,19 @@ import VerkaufView from '../views/VerkaufView.vue'
 import HilfeView from '../views/HilfeView.vue'
 import NeuesFahrradView from '@/views/NeuesFahrradView'
 import BikeView from '@/views/BikeView'
+import { navigationGuard } from '@okta/okta-vue'
+import LoginView from '@/views/LoginView'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+
+  {
+    path: '/login',
+    component: LoginView
   },
   {
     path: '/verkauf',
@@ -24,7 +31,12 @@ const routes = [
   {
     path: '/hilfe',
     name: 'hilfe',
-    component: HilfeView
+    component: HilfeView,
+    meta: {
+      requiresAuth: true
+    }
+
+
   },
   {
     path: '/einkauf/fahrrad',
@@ -35,8 +47,10 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  linkActiveClass: 'active',
   routes
 })
 
+
+router.beforeEach(navigationGuard)
 export default router
+
