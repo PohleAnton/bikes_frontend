@@ -30,6 +30,8 @@ data() {
   },
   mounted () {
 
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + store.eigId
+
     const requestOptions = {
       method: 'GET',
       redirect: 'follow'

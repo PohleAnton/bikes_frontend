@@ -23,7 +23,7 @@ export default {
     }
   },
   mounted () {
-
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/fahrrad'
     const requestOptions = {
          method: 'GET',
       redirect: 'follow'

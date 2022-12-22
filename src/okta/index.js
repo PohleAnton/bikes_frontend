@@ -2,9 +2,9 @@ import OktaSignIn from '@okta/okta-signin-widget'
 import { OktaAuth } from '@okta/okta-auth-js'
 
 const oktaSignIn = new OktaSignIn({
-  baseUrl: 'https://dev-99089238.okta.com',
-  clientId: '0oa7pqtt8i7Te6SJK5d7',
-  redirectUri:  'http://localhost:8081/login/callback',
+  baseUrl: 'https://dev-4978011.okta.com',
+  clientId: '0oa7q8jvi9otGezBr5d7',
+  redirectUri: process.env.VUE_APP_FRONTEND_BASE_URL + '/login/callback',
   authParams: {
     pkce: true,
     issuer: 'https://dev-99089238.okta.com/oauth2/default',
@@ -16,7 +16,7 @@ const oktaSignIn = new OktaSignIn({
 
 const oktaAuth = new OktaAuth({
   issuer: 'https://dev-99089238.okta.com/oauth2/default',
-  clientId: '0oa7pqtt8i7Te6SJK5d7',
+  clientId: '0oa7q8jvi9otGezBr5d7',
   redirectUri: window.location.origin + '/login/callback',
   scopes: ['openid', 'profile', 'email']
 })

@@ -4,8 +4,9 @@ import VerkaufView from '../views/VerkaufView.vue'
 import HilfeView from '../views/HilfeView.vue'
 import NeuesFahrradView from '@/views/NeuesFahrradView'
 import BikeView from '@/views/BikeView'
-import { navigationGuard } from '@okta/okta-vue'
-import LoginView from '@/views/LoginView'
+import { LoginCallback, navigationGuard } from '@okta/okta-vue'
+
+import LoginComponent from '@/views/Login'
 
 const routes = [
   {
@@ -14,10 +15,17 @@ const routes = [
     component: HomeView
   },
 
+
   {
     path: '/login',
-    component: LoginView
+    component: LoginComponent
   },
+  {
+    path: '/login/callback',
+    component: LoginCallback
+  },
+
+
   {
     path: '/verkauf',
     name: 'verkauf',
