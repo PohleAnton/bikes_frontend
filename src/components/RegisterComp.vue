@@ -24,7 +24,7 @@
         <label>Passwort</label>
       </div>
       <div class="form-floating">
-        <input v-model="data.password_confirm" required type="password" class="form-control" id="floatingInput" placeholder="Password bestätigen">
+        <input v-model="data.password_confirm" required type="password"  class="form-control" id="floatingInput" placeholder="Password bestätigen">
         <label>Passwort bestätigen</label>
       </div>
 
