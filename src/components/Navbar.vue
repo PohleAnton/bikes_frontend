@@ -53,7 +53,7 @@ export default {
           console.log(error);
         });
     }
-
+    //
     return{
       store,
       auth,
