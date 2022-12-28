@@ -1,5 +1,9 @@
 <template>
-  <div class="verkauf">
+
+  <h1 v-if="!auth">Melden Sie sich bitte an</h1>
+  <div v-if="auth" class="verkauf">
+
+    <div >
     <h1>Fahrrad-Verkauf</h1>
     <h3>Deine Fahrräder:</h3>
   </div>
@@ -17,5 +21,25 @@
     </router-link>
 
   </div>
-
+  </div>
 </template>
+
+
+<script>
+
+import {store} from '@/assets/store'
+export default {
+  name: 'VerkaufView',
+  data() {
+    return {
+      auth:Boolean,
+     store
+    }
+  },
+  mounted () {
+    this.auth=store.log
+  }
+}
+
+
+</script>

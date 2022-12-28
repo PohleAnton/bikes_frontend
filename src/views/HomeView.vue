@@ -1,6 +1,6 @@
 <template>
-  <h1 v-if="log">{{ message }}</h1>
-  <h1 v-if="!log">Sie sind nicht eingeloggt</h1>
+  <h1>{{ message }}</h1>
+
   <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
   <div class="container-fluid">
 <bike-card-list :bikes="this.bikes"></bike-card-list>
@@ -13,6 +13,7 @@ import { store } from '@/assets/store'
 import BikeCardList from '@/components/BikeCardList'
 import {ref, onMounted} from 'vue'
 import axios from 'axios'
+import { useStore } from 'vuex'
 
 export default {
   name: 'HomeView',
@@ -20,22 +21,26 @@ export default {
 
     const log=ref(false);
     const message=ref('Sie sind nicht eingeloggt');
+    const storee=useStore();
 
     onMounted(async ()=>{
 
     try {
       const response = await axios.get('http://localhost:8080/api/user');
       if (response.message !== "Request failed with status code 400") {
-        message.value=`Hi ${response.data.firstName}`
-        log.value = true;
 
+        log.value = true;
+        store.log=true;
+        message.value=`Hi ${response.data.firstName}`
+        await store.dispatch('setAuth', true)
        }
       console.log(response.response.data);
     }
 
     catch (error){
       console.error(error.response.data)
-      log.value=false
+      log.value=false;
+      store.log=false;
       }
     });
 return {
@@ -52,7 +57,7 @@ message}
       bikes: [],
       users:Object,
       store,
-      user:Object
+
 
     }
   },
