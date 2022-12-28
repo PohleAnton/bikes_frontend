@@ -30,31 +30,16 @@ data() {
   },
   mounted () {
 
-    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + store.eigId
-
     const requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
 
+    this.bike = store.bike;
 
-    this.bike=store.bike;
-
-    fetch('http://localhost:8080/api/v1/person/'+store.eigId, requestOptions)
-      .then(response => response.json()).then(response=>this.eigentuemer=response)
+    fetch('http://localhost:8080/api/user/' + store.eigId, requestOptions)
+      .then(response => response.json()).then(response => this.eigentuemer = response)
       .catch(error => console.log('error', error));
-
-
-
-
-
-
-  },
-  methods: {
-    mail() {
-      return 'mailto:'+this.eigentuemer.mailaddress
-
-    }
   }
 }
 </script>

@@ -10,6 +10,13 @@
           <router-link class="nav-link" to="/">Home</router-link>
           <router-link class="nav-link"  to="/verkauf">Verkauf</router-link>
           <router-link class="nav-link"  to="/hilfe">Hilfe</router-link>
+          <div class="text-end" v-if="!log">
+          <router-link class="nav-link" to="/login">Einloggen</router-link>
+          <router-link class="nav-link" to="/register">Registrieren</router-link>
+          </div>
+          <div class="text-end" v-if="log">
+            <router-link to="/" class="btn btn-outline-light me-2" @click="logout">Logout</router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -17,9 +24,40 @@
 </template>
 
 <script>
+import { onMounted,ref } from 'vue'
+import axios from 'axios'
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Navbar'
+  name: 'Navbar',
+  setup(){
+    const log=ref(false)
+    onMounted(async ()=>{
+      try{
+        await axios.get('http://localhost:8080/api/user')
+        log.value=true;
+      }
+      catch (e){
+        log.value=false;
+      }
+    });
+    const logout=async ()=>{
+      await axios.post('http://localhost:8080/api/logout', {}, {withCredentials: true})
+        .then(async function (response) {
+          axios.defaults.headers.common['Authorization'] = `Bearer ${response.data}`
+          log.value= false;
+          this.forceUpdate();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+
+    return{
+      log,
+      logout
+    }
+  }
 }
 </script>
 

@@ -4,9 +4,8 @@ import VerkaufView from '../views/VerkaufView.vue'
 import HilfeView from '../views/HilfeView.vue'
 import NeuesFahrradView from '@/views/NeuesFahrradView'
 import BikeView from '@/views/BikeView'
-import { LoginCallback, navigationGuard } from '@okta/okta-vue'
-
-import LoginComponent from '@/views/Login'
+import LoginView from '@/views/LoginView'
+import RegisterView from '@/views/RegisterView'
 
 const routes = [
   {
@@ -14,18 +13,6 @@ const routes = [
     name: 'home',
     component: HomeView
   },
-
-
-  {
-    path: '/login',
-    component: LoginComponent
-  },
-  {
-    path: '/login/callback',
-    component: LoginCallback
-  },
-
-
   {
     path: '/verkauf',
     name: 'verkauf',
@@ -39,26 +26,29 @@ const routes = [
   {
     path: '/hilfe',
     name: 'hilfe',
-    component: HilfeView,
-    meta: {
-      requiresAuth: true
-    }
-
-
+    component: HilfeView
   },
   {
     path: '/einkauf/fahrrad',
     name: 'fahrrad',
     component: BikeView
-  }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: RegisterView
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
+  linkActiveClass: 'active',
   routes
 })
 
-
-router.beforeEach(navigationGuard)
 export default router
-
