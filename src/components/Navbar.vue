@@ -11,12 +11,12 @@
           <router-link class="nav-link"  to="/verkauf">Verkauf</router-link>
           <router-link class="nav-link"  to="/hilfe">Hilfe</router-link>
         </ul>
-      <div class="text-end" v-if="!auth">
+      <div class="text-end" v-if="auth">
         <router-link to="/login" class="btn btn-outline-light me-2">Login</router-link>
         <router-link to="/register" class="btn btn-outline-light me-2">Registrieren</router-link>
       </div>
-        <div class="text-end" v-if="auth">
-          <router-link to="/" class="btn btn-outline-light me-2" @click="logout, store.log=false">Logout</router-link>
+        <div class="text-end" v-if="!auth">
+          <router-link to="/" class="btn btn-outline-light me-2" @click="logout">Logout</router-link>
         </div>
       </div>
     </div>
@@ -32,6 +32,7 @@ import { store } from '@/assets/store'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Navbar',
+
   setup(){
     const auth=ref(false)
     onMounted(async ()=>{
@@ -59,8 +60,15 @@ export default {
       auth,
       logout
     }
-  }
-}
+  },
+  mounted () {
+
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    this.auth=store.log
+}}
 </script>
 
 <style scoped>

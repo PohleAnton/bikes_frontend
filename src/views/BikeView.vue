@@ -1,4 +1,6 @@
 <template>
+<h1 v-if="!log">Melden Sie sich bitte an </h1>
+  <div v-if="log">
   <p>Das ausgewaehlte Fahrrad ist: {{bike.id}} </p>
 <!--  das öffnet den Standard Email Client und setzt in den Betreff die kurze Beschreibung ein. Ich werde dem Bike mal doch
   eine lange Beschreibung geben, dann könnte man die speziell auf dieser Seite anzeigen. Wider meinte außerdem in der
@@ -11,7 +13,7 @@
   <p>Jetzt muss sich nur noch "irgendjemand" um das Design kümmern...</p>
 
 
-
+  </div>
 </template>
 
 <script>
@@ -26,6 +28,7 @@ data() {
       bike: Object,
       eigentuemer: Object,
       store,
+      log:Boolean
     }
   },
   mounted () {
@@ -36,6 +39,7 @@ data() {
     };
 
     this.bike = store.bike;
+    this.log=store.log;
 
     fetch('http://localhost:8080/api/user/' + store.eigId, requestOptions)
       .then(response => response.json()).then(response => this.eigentuemer = response)
