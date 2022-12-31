@@ -7,6 +7,7 @@ import BikeView from '@/views/BikeView'
 import LoginView from '@/views/LoginView'
 import RegisterView from '@/views/RegisterView'
 
+
 const routes = [
   {
     path: '/',

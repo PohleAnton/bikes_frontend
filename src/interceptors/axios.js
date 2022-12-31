@@ -3,7 +3,9 @@ import {store} from "@/assets/store";
 
 
 let refresh=false;
-
+export default{
+  name:'axios'
+}
 axios.interceptors.response.use(resp => resp, async error => {
 
   if (error.response.status === 401&&!refresh){
@@ -19,4 +21,6 @@ axios.interceptors.response.use(resp => resp, async error => {
     }
   }
   return error;
+
+
 });

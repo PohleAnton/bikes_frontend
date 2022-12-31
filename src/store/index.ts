@@ -5,12 +5,12 @@ export default createStore({
       auth:false
     },
   mutations: {
-      setAuth( state, auth) {
+      setAuth( state:{auth:boolean}, auth:boolean) {
           state.auth=auth;
       }
   },
   actions: {
-      setAuth(context, auth){
+      setAuth(context:ActionContext<any, any>, auth:boolean){
         context.commit('setAuth', auth);
 
 

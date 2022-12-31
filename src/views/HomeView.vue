@@ -41,6 +41,8 @@ export default {
       console.error(error.response.data)
       log.value=false;
       store.log=false;
+      await store.dispatch('setAuth', false)
+      message.value=('Sie sind nicht eingeloggt');
       }
     });
 return {

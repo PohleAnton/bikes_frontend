@@ -11,12 +11,12 @@
           <router-link class="nav-link"  to="/verkauf">Verkauf</router-link>
           <router-link class="nav-link"  to="/hilfe">Hilfe</router-link>
         </ul>
-      <div class="text-end" v-if="auth">
+      <div class="text-end" v-if="!auth">
         <router-link to="/login" class="btn btn-outline-light me-2">Login</router-link>
         <router-link to="/register" class="btn btn-outline-light me-2">Registrieren</router-link>
       </div>
-        <div class="text-end" v-if="!auth">
-          <router-link to="/" class="btn btn-outline-light me-2" @click="logout">Logout</router-link>
+        <div class="text-end" v-if="auth">
+          <router-link to="/" class="btn btn-outline-light me-2" @click="logout()">Logout</router-link>
         </div>
       </div>
     </div>
@@ -25,40 +25,42 @@
 </template>
 
 <script>
-import { onMounted,ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import axios from 'axios'
 
-import { store } from '@/assets/store'
+
+
+import {store} from '@/assets/store'
+import { useStore } from 'vuex'
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Navbar',
+  // setup(){
+  //   const storee=useStore()
+  //   const log=computed(()=>storee.state.auth)
+  //
+  //   const logout=async ()=>{
+  //     await axios.post('http://localhost:8080/api/logout',{}, {withCredentials:true})
+  //   }
+  //
+  //   return{
+  //     log,logout
+  //   }
+  // },
 
-  setup(){
-    const auth=ref(false)
-    onMounted(async ()=>{
-        try{await axios.get('http://localhost:8080/api/user');
-          auth.value=true;
-        }
-        catch (e){
-          auth.value=false;
-        }
-    });
-    const logout=async ()=>{
-      await axios.post('http://localhost:8080/api/logout', {}, {withCredentials: true})
-        .then(async function (response) {
-          axios.defaults.headers.common['Authorization'] = `Bearer ${response.data}`
-          auth.value= false;
-          this.forceUpdate();
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
-    //
-    return{
-      store,
-      auth,
-      logout
+
+  methods:{
+    logout(){
+      this.auth=false,
+        this.store.log=false
+    },
+
+  },
+  data() {
+    return {
+      auth:Boolean,
+      store
     }
   },
   mounted () {
@@ -68,7 +70,8 @@ export default {
       redirect: 'follow'
     };
     this.auth=store.log
-}}
+}
+}
 </script>
 
 <style scoped>
