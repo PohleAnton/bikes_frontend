@@ -1,66 +1,55 @@
 <template>
+  <h1 v-if="!store.log">Sie sind nicht eingeloggt</h1>
+  <div v-if="store.log">
   <h1>{{ message }}</h1>
-
   <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
   <div class="container-fluid">
 <bike-card-list :bikes="this.bikes"></bike-card-list>
+  </div>
   </div>
 </template>
 
 <script>
 
-import { store } from '@/assets/store'
-import BikeCardList from '@/components/BikeCardList'
-import {ref, onMounted} from 'vue'
-import axios from 'axios'
-import { useStore } from 'vuex'
+import { store } from '@/assets/store';
+import BikeCardList from '@/components/BikeCardList';
+import {ref, onMounted} from 'vue';
+import axios from 'axios';
+import { useStore } from 'vuex';
+import Navbar from '@/components/Navbar';
 
 export default {
   name: 'HomeView',
   setup(){
-
-    const log=ref(false);
     const message=ref('Sie sind nicht eingeloggt');
-    const storee=useStore();
-
     onMounted(async ()=>{
-
-    try {
+      try {
       const response = await axios.get('http://localhost:8080/api/user');
-      if (response.message !== "Request failed with status code 400") {
-
-        log.value = true;
+      if (response.status !== 400|401) {
         store.log=true;
         message.value=`Hi ${response.data.firstName}`
-        await store.dispatch('setAuth', true)
        }
-      console.log(response.response.data);
+      console.log(response.data);
     }
-
     catch (error){
       console.error(error.response.data)
-      log.value=false;
       store.log=false;
-      await store.dispatch('setAuth', false)
       message.value=('Sie sind nicht eingeloggt');
       }
     });
 return {
-log,
-message}
+message,
+store}
   },
-
   components: {
     BikeCardList,
+    Navbar
   },
 
   data() {
     return {
       bikes: [],
       users:Object,
-      store,
-
-
     }
   },
   mounted () {
@@ -82,7 +71,6 @@ message}
         this.users.push(user)
       }))
       .catch(error => console.log('error', error));
-
   },
 }
 </script>
