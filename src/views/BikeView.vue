@@ -1,8 +1,8 @@
 <template>
   <div v-if="!store.log">
 <h1 >Melden Sie sich bitte an </h1>
-  <button  class="w-100 btn btn-lg btn-primary" type="submit">Registrieren</button>
-    <button  class="w-100 btn btn-lg btn-primary" type="submit">
+  <button  class="w-15 btn btn-lg btn-primary" type="submit">Registrieren</button>
+    <button  class="w-15 btn btn-lg btn-primary" type="submit">
       <router-link class="nav-link"  to="/login">zum Login</router-link>
 
     </button>
