@@ -3,7 +3,7 @@
     {{ store.eigId }}
   </h1>
   <div>
-    <h4>Kategorie:</h4>
+    <h4>Kategorie°:</h4>
     <select v-model = "kategorie">
       <option disabled value = "">Bitte wähle aus</option>
       <option>SPORTFAHRRAD</option>
@@ -16,7 +16,7 @@
     <p></p>
   </div>
   <div>
-    <h4>Abnutzungsgrad:</h4>
+    <h4>Abnutzungsgrad°:</h4>
     <select v-model = "abnutzungsgrad">
       <option disabled value = "">Bitte wähle aus</option>
       <option>NEU</option>
@@ -27,7 +27,7 @@
     <p></p>
   </div>
   <div>
-    <h4>Farbe:</h4>
+    <h4>Farbe°:</h4>
     <select v-model = "farbe">
       <option disabled value = "">Bitte wähle aus</option>
       <option>SCHWARZ</option>
@@ -41,11 +41,9 @@
     </select>
     <p></p>
   </div>
-  <h4>Preis:</h4>
+  <h4>Preis°:</h4>
   <div>
-    <input v-model = "preis" placeholder = "ganze Zahl" type = "text" ref="nameInput">
-    .
-    <input v-model = "preis2" placeholder = "Kommazahl" type = "text" ref="nameInput">
+    <input v-model = "preis" required placeholder = "preis" type = "text" ref="nameInput">
     <p></p>
   </div>
   <div>
@@ -66,6 +64,9 @@
   <div>
     <button type="button" @click="save()">Speichern</button>
   </div>
+  <p>
+    ° = obligatorisch
+  </p>
 </template>
 
 <script>
@@ -130,6 +131,7 @@ export default {
         .then(response => response.json())
         .then(data => {
           console.log('Success:', data)
+          router.push('/')
         })
         .catch(error => console.log('error', error))
     }
