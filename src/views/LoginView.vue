@@ -4,11 +4,16 @@
 
 <script>
 import LoginComp from "@/components/LoginComp";
-
+import {store} from '@/assets/store'
 
 export default {
   name: "LoginView",
-  components: { LoginComp }
+  components: { LoginComp },
+  data(){
+    return{
+      store
+    }
+  }
 }
 </script>
 

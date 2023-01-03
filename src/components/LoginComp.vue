@@ -42,7 +42,8 @@
           const response = await axios.post('http://localhost:8080/api/login', data, {
             withCredentials:true
           });
-          store.eigId=response.data.id
+          store.eigId=response.id
+          console.log(response.id)
 
           axios.defaults.headers.common['Authorization']='Bearer '+ response.data.token;
 

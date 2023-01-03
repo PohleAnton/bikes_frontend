@@ -1,7 +1,7 @@
 <template>
   <h1 v-if="!store.log">Sie sind nicht eingeloggt :(</h1>
   <div v-if="store.log">
-  <h1>{{ message }}{{store.eigId}}</h1>
+  <h1>{{ store.eigId}}</h1>
   <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
   <div class="container-fluid">
 <bike-card-list :bikes="this.bikes"></bike-card-list>
@@ -28,11 +28,12 @@ export default {
       if (response.status <400) {
         store.log=true;
         message.value=`Hi ${response.data.firstName}`
+        store.eigId=response.data.id
        }
       console.log(response.data);
     }
     catch (error){
-      console.error(error.response.data)
+
       store.log=false;
       message.value=('Sie sind nicht eingeloggt');
       }
@@ -42,14 +43,16 @@ message, store}
   },
   components: {
     BikeCardList,
-    Navbar,
-    store
+    Navbar
+
   },
 
   data() {
     return {
       bikes: [],
       users:Object,
+      id:Number
+
 
     }
   },
@@ -59,6 +62,7 @@ message, store}
          method: 'GET',
       redirect: 'follow'
     };
+    this.id=store.eigId
 
     fetch('http://localhost:8080/api/v1/fahrrad', requestOptions)
       .then(response => response.json())
@@ -66,12 +70,7 @@ message, store}
         this.bikes.push(bike)
       }))
       .catch(error => console.log('error', error));
-    fetch ('http://localhost:8080/api/user', requestOptions)
-      .then(response => response.json())
-      .then(result =>result.forEach(user =>{
-        this.users.push(user)
-      }))
-      .catch(error => console.log('error', error));
-  },
+
+   },
 }
 </script>
