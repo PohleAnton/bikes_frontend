@@ -1,7 +1,7 @@
 <template>
   <h1 v-if="!store.log">Sie sind nicht eingeloggt :(</h1>
   <div v-if="store.log">
-  <h1>{{ message }}</h1>
+  <h1>{{ message }}{{store.eigId}}</h1>
   <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
   <div class="container-fluid">
 <bike-card-list :bikes="this.bikes"></bike-card-list>
@@ -50,6 +50,7 @@ message, store}
     return {
       bikes: [],
       users:Object,
+
     }
   },
   mounted () {

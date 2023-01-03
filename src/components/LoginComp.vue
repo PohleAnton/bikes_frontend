@@ -24,16 +24,16 @@
     import axios from "axios";
     import { reactive } from 'vue'
     import { useRouter } from 'vue-router/dist/vue-router'
-
-
-
+    import {store} from '@/assets/store'
 
     export default {
       name: "LoginComp",
+
       setup(){
         const data= reactive({
           username:'',
-          password:''
+          password:'',
+
         });
 
         const router =useRouter();
@@ -42,6 +42,7 @@
           const response = await axios.post('http://localhost:8080/api/login', data, {
             withCredentials:true
           });
+          store.eigId=response.data.id
 
           axios.defaults.headers.common['Authorization']='Bearer '+ response.data.token;
 
@@ -50,7 +51,8 @@
 
       return {
         data,
-        submit
+        submit,
+        store
       }
       }};
 
