@@ -27,7 +27,7 @@
           <router-link class="nav-link"  to="/verkauf">Verkauf</router-link>
           <router-link class="nav-link"  to="/hilfe">Hilfe</router-link>
         </ul>
-        <router-link to="/" class="btn btn-outline-light me-2" @click="logout()">Logout</router-link>
+        <router-link to="/" class="btn btn-outline-light me-2" @click="logout(), this.$forceUpdate();">Logout</router-link>
       </div>
     </div>
 
