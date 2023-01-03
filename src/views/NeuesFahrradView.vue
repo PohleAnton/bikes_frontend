@@ -3,45 +3,45 @@
     Neues Angebot erstellen
   </h1>
   <div>
-    <p> Kategorie:</p>
+    <h4>Kategorie:</h4>
     <select v-model = "kategorie">
-      <option disabled value = "">Bitte wähle eins aus</option>
-      <option>SPORTFAHRRAD</option>
-      <option>EBIKE</option>
-      <option>MOUNTAINBIKE</option>
-      <option>CITYBIKE</option>
-      <option>KINDERFAHRRAD</option>
-      <option>SONSTIGE</option>
+      <option disabled value = "">Bitte wähle aus</option>
+      <option>Sportfahrrad</option>
+      <option>E-Bike</option>
+      <option>Mountainbike</option>
+      <option>Citybike</option>
+      <option>Kinderfahrrad</option>
+      <option>Sonstige</option>
     </select>
     <p></p>
   </div>
   <div>
-    <p> Abnutzungsgrad:</p>
+    <h4>Abnutzungsgrad:</h4>
     <select v-model = "abnutzungsgrad">
-      <option disabled value = "">Bitte wähle eins aus</option>
-      <option>NEU</option>
-      <option>GERINGE ABNUTZUNG</option>
-      <option>MITTLERE ABNUTZUNG</option>
-      <option>STARKE ABNUTZUNG</option>
+      <option disabled value = "">Bitte wähle aus</option>
+      <option>Neu</option>
+      <option>Geringe Abnutzung</option>
+      <option>Mittlere Abnutzung</option>
+      <option>Starke Abnutzung</option>
     </select>
     <p></p>
   </div>
   <div>
-    <p> Farbe:</p>
+    <h4>Farbe:</h4>
     <select v-model = "farbe">
-      <option disabled value = "">Bitte wähle eins aus</option>
-      <option>SCHWARZ</option>
-      <option>GRAU</option>
-      <option>WEISS</option>
-      <option>ROT</option>
-      <option>BLAU</option>
-      <option>GRUEN</option>
-      <option>SONSTIGE</option>
-      <option>MIXED</option>
+      <option disabled value = "">Bitte wähle aus</option>
+      <option>Schwarz</option>
+      <option>Grau</option>
+      <option>Weiß</option>
+      <option>Rot</option>
+      <option>Blau</option>
+      <option>Grün</option>
+      <option>Sonstige</option>
+      <option>Mixed</option>
     </select>
     <p></p>
   </div>
-  <p>Weiteres:  </p>
+  <h4>Weiteres:</h4>
   <div>
     <input v-model = "preis" placeholder = "preis" type = "text" ref="nameInput">
     <p></p>
