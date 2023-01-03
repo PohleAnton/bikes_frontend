@@ -65,7 +65,13 @@ export default {
   name: 'NeuesFahrradView',
   data() {
     return {
-      nameField:''
+      kategorie:'',
+      abnutzungsgrad:'',
+      farbe:'',
+      preis:'',
+      bildUrl:'',
+      kurzbeschreibung:'',
+      langbeschreibung:''
     }
   }
 }
