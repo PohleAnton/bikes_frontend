@@ -41,22 +41,30 @@
     </select>
     <p></p>
   </div>
-  <h4>Weiteres:</h4>
+  <h4>Preis:</h4>
   <div>
-    <input v-model = "preis" placeholder = "preis" type = "text" ref="nameInput">
+    <input v-model = "preis" placeholder = "ganze Zahl" type = "text" ref="nameInput">
+    .
+    <input v-model = "preis2" placeholder = "Kommazahl" type = "text" ref="nameInput">
     <p></p>
   </div>
   <div>
+    <h4>Bild:</h4>
     <input v-model = "bildUrl" placeholder = "bildUrl" type = "text" ref="nameInput">
     <p></p>
   </div>
   <div>
+    <h4>Kurzbeschreibung:</h4>
     <input v-model = "kurzbeschreibung" placeholder = "kurzbeschreibung" type = "text" ref="nameInput">
     <p></p>
   </div>
   <div>
+    <h4>Langbeschreibung:</h4>
     <input v-model = "langbeschreibung" placeholder = "langbeschreibung" type = "text" ref="nameInput">
     <p></p>
+  </div>
+  <div>
+    <button type="button" @click="save()">Speichern</button>
   </div>
 </template>
 
@@ -72,6 +80,33 @@ export default {
       bildUrl:'',
       kurzbeschreibung:'',
       langbeschreibung:''
+    }
+  },
+  methods: {
+    save() {
+      const endpoint = 'http://localhost:8080'
+      const data = {
+        kategorie: this.kategorie,
+        abnutzung: this.abnutzungsgrad,
+        farbe: this.farbe,
+        preis: this.preis,
+        bild: this.bildUrl,
+        kurzbesch: this.kurzbeschreibung,
+        langbesch: this.langbeschreibung
+      }
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(data)
+      }
+      fetch(endpoint, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data)
+        })
+        .catch(error => console.log('error', error))
     }
   }
 }
