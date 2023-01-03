@@ -1,6 +1,6 @@
 <template>
   <h1>
-    Neues Angebot erstellen
+    {{ store.eigId }}
   </h1>
   <div>
     <h4>Kategorie:</h4>
@@ -69,8 +69,32 @@
 </template>
 
 <script>
+import { onMounted, ref } from 'vue'
+import axios from 'axios'
+import { store } from '@/assets/store'
+
 export default {
   name: 'NeuesFahrradView',
+  setup(){
+    const message=ref('Sie sind nicht eingeloggt');
+    onMounted(async ()=>{
+      try {
+        const response = await axios.get('http://localhost:8080/api/user');
+        if (response.status <400) {
+          store.log=true;
+          store.eigId=response.data.id
+        }
+        console.log(response.data);
+      }
+      catch (error){
+
+        store.log=false;
+        message.value=('Sie sind nicht eingeloggt');
+      }
+    });
+    return {
+       store}
+  },
   data() {
     return {
       kategorie:'',
@@ -90,7 +114,7 @@ export default {
         abnutzungsgrad: this.abnutzungsgrad,
         farbe: this.farbe,
         price: this.preis,
-        eigentuemerId: 1,
+        eigentuemerId: store.eigId,
         bildUrl: this.bildUrl,
         kurzeBeschreibung: this.kurzbeschreibung,
         langeBeschreibung: this.langbeschreibung
