@@ -1,7 +1,7 @@
 <template>
 
-  <h1 v-if="!auth">Melden Sie sich bitte an</h1>
-  <div v-if="auth" class="verkauf">
+  <h1 v-if="!store.log">Melden Sie sich bitte an</h1>
+  <div v-if="store.log" class="verkauf">
 
     <div >
     <h1>Fahrrad-Verkauf</h1>

@@ -1,5 +1,5 @@
 <template>
-  <h1 v-if="!store.log">Sie sind nicht eingeloggt</h1>
+  <h1 v-if="!store.log">Sie sind nicht eingeloggt :(</h1>
   <div v-if="store.log">
   <h1>{{ message }}</h1>
   <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
@@ -15,7 +15,7 @@ import { store } from '@/assets/store';
 import BikeCardList from '@/components/BikeCardList';
 import {ref, onMounted} from 'vue';
 import axios from 'axios';
-import { useStore } from 'vuex';
+
 import Navbar from '@/components/Navbar';
 
 export default {
@@ -25,7 +25,7 @@ export default {
     onMounted(async ()=>{
       try {
       const response = await axios.get('http://localhost:8080/api/user');
-      if (response.status !== 400|401) {
+      if (response.status <400) {
         store.log=true;
         message.value=`Hi ${response.data.firstName}`
        }
@@ -38,12 +38,12 @@ export default {
       }
     });
 return {
-message,
-store}
+message, store}
   },
   components: {
     BikeCardList,
-    Navbar
+    Navbar,
+    store
   },
 
   data() {

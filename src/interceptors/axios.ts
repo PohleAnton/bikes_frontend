@@ -8,8 +8,8 @@ export default{
 }
 axios.interceptors.response.use(resp => resp, async error => {
 
-  if (error.response.status === 401&&!refresh){
-    refresh=true;
+  if (error.response.status === 401){
+    refresh=false;
     const response = await axios.post('https://localhost:8080/api/refresh', {}, {withCredentials:true});
 
     if (response.status ===200){
@@ -21,6 +21,4 @@ axios.interceptors.response.use(resp => resp, async error => {
     }
   }
   return error;
-
-
 });
