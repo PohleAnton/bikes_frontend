@@ -6,12 +6,12 @@
     <h4>Kategorie:</h4>
     <select v-model = "kategorie">
       <option disabled value = "">Bitte wähle aus</option>
-      <option>Sportfahrrad</option>
-      <option>E-Bike</option>
-      <option>Mountainbike</option>
-      <option>Citybike</option>
-      <option>Kinderfahrrad</option>
-      <option>Sonstige</option>
+      <option>SPORTFAHRRAD</option>
+      <option>EBIKE</option>
+      <option>MOUNTAINBIKE</option>
+      <option>CITYBIKE</option>
+      <option>KINDERFAHRRAD</option>
+      <option>SONSTIGE</option>
     </select>
     <p></p>
   </div>
@@ -19,10 +19,10 @@
     <h4>Abnutzungsgrad:</h4>
     <select v-model = "abnutzungsgrad">
       <option disabled value = "">Bitte wähle aus</option>
-      <option>Neu</option>
-      <option>Geringe Abnutzung</option>
-      <option>Mittlere Abnutzung</option>
-      <option>Starke Abnutzung</option>
+      <option>NEU</option>
+      <option>GERINGE_ABNUTZUNG</option>
+      <option>MITTLERE_ABNUTZUNG</option>
+      <option>STARKE_ABNUTZUNG</option>
     </select>
     <p></p>
   </div>
@@ -30,14 +30,14 @@
     <h4>Farbe:</h4>
     <select v-model = "farbe">
       <option disabled value = "">Bitte wähle aus</option>
-      <option>Schwarz</option>
-      <option>Grau</option>
-      <option>Weiß</option>
-      <option>Rot</option>
-      <option>Blau</option>
-      <option>Grün</option>
-      <option>Sonstige</option>
-      <option>Mixed</option>
+      <option>SCHWARZ</option>
+      <option>GRAU</option>
+      <option>WEISS</option>
+      <option>ROT</option>
+      <option>BLAU</option>
+      <option>GRUEN</option>
+      <option>SONSTIGE</option>
+      <option>MIXED</option>
     </select>
     <p></p>
   </div>
@@ -84,15 +84,16 @@ export default {
   },
   methods: {
     save() {
-      const endpoint = 'http://localhost:8080'
+      const endpoint = 'http://localhost:8080/api/v1/fahrrad'
       const data = {
         kategorie: this.kategorie,
-        abnutzung: this.abnutzungsgrad,
+        abnutzungsgrad: this.abnutzungsgrad,
         farbe: this.farbe,
-        preis: this.preis,
-        bild: this.bildUrl,
-        kurzbesch: this.kurzbeschreibung,
-        langbesch: this.langbeschreibung
+        price: this.preis,
+        eigentuemerId: 1,
+        bildUrl: this.bildUrl,
+        kurzeBeschreibung: this.kurzbeschreibung,
+        langeBeschreibung: this.langbeschreibung
       }
       const requestOptions = {
         method: 'POST',
