@@ -1,6 +1,14 @@
 <template>
 
-  <h1 v-if="!store.log">Melden Sie sich bitte an</h1>
+  <div v-if="!store.log">
+    <h1 >Neugierig geworden? </h1>
+    <button  class="w-15 btn btn-lg btn-primary" type="submit">
+      <router-link class="nav-link"  to="/register">Registrieren</router-link>
+    </button>
+    <button  class="w-15 btn btn-lg btn-primary" type="submit">
+      <router-link class="nav-link"  to="/login">zum Login</router-link>
+    </button>
+  </div>
   <div v-if="store.log" class="verkauf">
 
     <div >

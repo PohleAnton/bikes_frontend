@@ -1,4 +1,14 @@
 <template>
+  <div v-if="!store.log">
+    <h1 >Neugierig geworden? </h1>
+    <button  class="w-15 btn btn-lg btn-primary" type="submit">
+      <router-link class="nav-link"  to="/register">Registrieren</router-link>
+    </button>
+    <button  class="w-15 btn btn-lg btn-primary" type="submit">
+      <router-link class="nav-link"  to="/login">zum Login</router-link>
+    </button>
+  </div>
+  <div v-if="store.log">
   <h1>
     {{ store.eigId }}
   </h1>
@@ -67,6 +77,7 @@
   <p>
     ° = obligatorisch
   </p>
+  </div>
 </template>
 
 <script>

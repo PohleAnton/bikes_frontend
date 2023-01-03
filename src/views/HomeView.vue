@@ -1,12 +1,21 @@
 <template>
-  <h1 v-if="!store.log">Sie sind nicht eingeloggt :(</h1>
+  <div v-if="!store.log">
+    <h1 >Ohne Anmeldung ist "nur gucken, nicht anfassen" </h1>
+    <button  class="w-15 btn btn-lg btn-primary" type="submit">
+      <router-link class="nav-link"  to="/register">Registrieren</router-link>
+    </button>
+    <button  class="w-15 btn btn-lg btn-primary" type="submit">
+      <router-link class="nav-link"  to="/login">zum Login</router-link>
+    </button>
+  </div>
   <div v-if="store.log">
-  <h1>{{ store.eigId}}</h1>
+  <h1>{{ message}}</h1>
+  </div>
   <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
   <div class="container-fluid">
 <bike-card-list :bikes="this.bikes"></bike-card-list>
   </div>
-  </div>
+
 </template>
 
 <script>
@@ -74,3 +83,25 @@ message, store}
    },
 }
 </script>
+
+<style>
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;}
+</style>
