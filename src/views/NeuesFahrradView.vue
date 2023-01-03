@@ -131,7 +131,6 @@ export default {
         .then(response => response.json())
         .then(data => {
           console.log('Success:', data)
-          router.push('/')
         })
         .catch(error => console.log('error', error))
     }
