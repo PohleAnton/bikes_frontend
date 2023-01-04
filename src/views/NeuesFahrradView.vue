@@ -58,7 +58,8 @@
   </div>
   <div>
     <h4>Bild:</h4>
-    <input v-model = "bildUrl" placeholder = "bildUrl" type = "text" ref="nameInput">
+    <input v-on="bildUrl" type="file" @change="onFileSelected">
+    <button @click="onUpload">Hochladen</button>
     <p></p>
   </div>
   <div>
@@ -116,7 +117,8 @@ export default {
       preis:'',
       bildUrl:'',
       kurzbeschreibung:'',
-      langbeschreibung:''
+      langbeschreibung:'',
+      selectedFile: null
     }
   },
   methods: {
@@ -148,6 +150,12 @@ export default {
         .catch(error => console.log('error', error)
         )
       router.push("/")
+    },
+    onFileSelected(event) {
+      this.selectedFile = event.target.files[0]
+    },
+    onUpload() {
+
     }
   }
 }
