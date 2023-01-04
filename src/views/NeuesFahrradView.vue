@@ -130,7 +130,7 @@ export default {
         farbe: this.farbe,
         price: this.preis,
         eigentuemerId: store.eigId,
-        bildUrl: this.bildUrl,
+        bildUrl: this.selectedFile,
         kurzeBeschreibung: this.kurzbeschreibung,
         langeBeschreibung: this.langbeschreibung
       }
@@ -153,10 +153,10 @@ export default {
     },
     onFileSelected(event) {
       this.selectedFile = event.target.files[0]
-    },
-    onUpload() {
-
     }
+    /*onUpload() {
+      axios.post('my-domain.com/file-upload', this.selectedFile)
+    }*/
   }
 }
 </script>
