@@ -12,7 +12,12 @@
   <h1>{{ message}}</h1>
   </div>
   <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
+  <div>
+    <input v-model = "id" required placeholder = "nach Kategorie suchen" type = "text" ref="nameInput">
+    <p></p>
+  </div>
   <div class="container-fluid">
+
 <bike-card-list :bikes="this.bikes"></bike-card-list>
   </div>
 
@@ -32,6 +37,7 @@ export default {
   setup(){
     const message=ref('Sie sind nicht eingeloggt');
     onMounted(async ()=>{
+
       try {
       const response = await axios.get('http://localhost:8080/api/user');
       if (response.status <400) {
@@ -65,6 +71,16 @@ message, store}
 
     }
   },
+  methods:{
+    search(value){
+        return this.bikes (
+          it=>value.length<1||
+            it.kategorie.toLocaleLowerCase().includes(value)
+        )
+
+
+    }
+  },
   mounted () {
 
     const requestOptions = {
@@ -72,6 +88,8 @@ message, store}
       redirect: 'follow'
     };
     this.id=store.eigId
+
+
 
     fetch('http://localhost:8080/api/v1/fahrrad', requestOptions)
       .then(response => response.json())
