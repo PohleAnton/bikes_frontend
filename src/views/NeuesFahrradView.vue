@@ -149,7 +149,7 @@ export default {
         })
         .catch(error => console.log('error', error)
         )
-      router.push("/")
+      router.push("/"),{withCredentials: true}
     },
     onFileSelected(event) {
       this.selectedFile = event.target.files[0]
