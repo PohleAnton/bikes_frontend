@@ -58,7 +58,8 @@
   </div>
   <div>
     <h4>Bild:</h4>
-    <input v-model = "bildUrl" placeholder = "bildUrl" type = "text" ref="nameInput">
+    <input v-on="bildUrl" type="file" @change="onFileSelected">
+    <button @click="onUpload">Hochladen</button>
     <p></p>
   </div>
   <div>
@@ -84,6 +85,7 @@
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import { store } from '@/assets/store'
+import router from '@/router'
 
 export default {
   name: 'NeuesFahrradView',
@@ -115,7 +117,8 @@ export default {
       preis:'',
       bildUrl:'',
       kurzbeschreibung:'',
-      langbeschreibung:''
+      langbeschreibung:'',
+      selectedFile: null
     }
   },
   methods: {
@@ -131,6 +134,7 @@ export default {
         kurzeBeschreibung: this.kurzbeschreibung,
         langeBeschreibung: this.langbeschreibung
       }
+      let worked = false
       const requestOptions = {
         method: 'POST',
         headers: {
@@ -143,7 +147,15 @@ export default {
         .then(data => {
           console.log('Success:', data)
         })
-        .catch(error => console.log('error', error))
+        .catch(error => console.log('error', error)
+        )
+      router.push("/")
+    },
+    onFileSelected(event) {
+      this.selectedFile = event.target.files[0]
+    },
+    onUpload() {
+
     }
   }
 }
