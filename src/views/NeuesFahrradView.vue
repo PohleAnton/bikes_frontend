@@ -84,6 +84,7 @@
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import { store } from '@/assets/store'
+import router from '@/router'
 
 export default {
   name: 'NeuesFahrradView',
@@ -131,6 +132,7 @@ export default {
         kurzeBeschreibung: this.kurzbeschreibung,
         langeBeschreibung: this.langbeschreibung
       }
+      let worked = false
       const requestOptions = {
         method: 'POST',
         headers: {
@@ -143,7 +145,9 @@ export default {
         .then(data => {
           console.log('Success:', data)
         })
-        .catch(error => console.log('error', error))
+        .catch(error => console.log('error', error)
+        )
+      router.push("/")
     }
   }
 }
