@@ -1,9 +1,9 @@
 import Navbar from '@/components/Navbar'
 import {store} from '@/assets/store'
-import { flushPromises, mount, shallowMount } from '@vue/test-utils'
+import { mount, flushPromises } from '@vue/test-utils'
+
 import BikeCardList from '@/components/BikeCardList'
 import HomeView from '@/views/HomeView'
-
 
 describe('Testing Navbar.vue', () => {
 
