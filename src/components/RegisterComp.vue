@@ -44,31 +44,22 @@ export default {
       lastName: '',
       mailaddress:'',
       password: '',
-      password_confirm:'',
 
     });
 
     const router = useRouter();
-    const pw_matching=ref(false);
-    const log_available=ref(false);
-    //to do later:(sowohl == als auch === führen nicht zum gewünschten ergebnis
-    function pw() {
-      if(!Object.is(data.password_confirm,data.password)){
-        log_available.value=false;
-      }
-      else if(Object.is(data.password_confirm,data.password)){
-        log_available.value=true;
-      }
-    }
+
+
+
 
     const submit = async () => {
 
       console.log(data)
-      await axios.post('http://localhost:8080/api/register', data)
+      await axios.post('http://localhost:8080/api/register', data);
       await router.push('/login')
 
     }
-    return {data, submit,pw_matching, log_available, pw}
+    return {data, submit}
   }
 }
 </script>

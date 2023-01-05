@@ -9,7 +9,7 @@ import VerkaufView from '@/views/VerkaufView'
 describe('Testing Navbar.vue', () => {
 
 
-  it('should show page title depeding on login state: NOT logged in', () => {
+  it('calls logout() on button click', () => {
     const wrapper = mount(VerkaufView,
       {
         data(){

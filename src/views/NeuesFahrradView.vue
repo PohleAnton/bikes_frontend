@@ -73,7 +73,7 @@
     <p></p>
   </div>
   <div>
-    <button type="button" @click="save()">Speichern</button>
+    <button type="button" @click="save();this.$forceUpdate()">Speichern</button>
   </div>
   <p>
     ° = obligatorisch
@@ -94,7 +94,7 @@ export default {
     onMounted(async ()=>{
       try {
         const response = await axios.get('http://localhost:8080/api/user');
-        if (response.status <400) {
+        if (response.status !==400) {
           store.log=true;
           store.eigId=response.data.id
         }
