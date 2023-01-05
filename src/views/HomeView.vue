@@ -13,12 +13,16 @@
   </div>
   <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
   <div>
-    <input v-model = "id" required placeholder = "nach Kategorie suchen" type = "text" ref="nameInput">
+    <input v-model="filterCrit" placeholder = "nach Beschreibung suchen">
     <p></p>
   </div>
   <div class="container-fluid">
+<div>
+<bike-card-list  :bikes="this.bikes"></bike-card-list>
+</div>
 
-<bike-card-list :bikes="this.bikes"></bike-card-list>
+
+
   </div>
 
 </template>
@@ -27,6 +31,7 @@
 
 import { store } from '@/assets/store';
 import BikeCardList from '@/components/BikeCardList';
+import BikeCard from '@/components/BikeCard'
 import {ref, onMounted} from 'vue';
 import axios from 'axios';
 
@@ -35,10 +40,10 @@ import Navbar from '@/components/Navbar';
 export default {
   name: 'HomeView',
   methods:{
-    search(value){
-      return this.bikes (
-        it=>value.length<1||
-          it.kategorie.toLocaleLowerCase().includes(value)
+    myFilterFunc (crit){
+      return this.bikes.filter (
+        it => crit.length < 1 ||
+          it.kurzeBeschreibung.toLowerCase().includes(crit.toLowerCase())
       )
     }
   },
@@ -47,7 +52,7 @@ export default {
     onMounted(async ()=>{
       try {
         const response = await axios.get('http://localhost:8080/api/user');
-        if (response.status <400) {
+        if (response.status !==400) {
           store.log=true;
           message.value=`Hi ${response.data.firstName}`
         }
@@ -71,13 +76,15 @@ export default {
     return {
       bikes: [],
       users:[],
+      myFilterFunc:''
     }
   },
-  mounted () {
+  async created() {
     const requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
+
     fetch('http://localhost:8080/api/v1/fahrrad', requestOptions)
       .then(response => response.json())
       .then(result =>result.forEach(bike =>{
