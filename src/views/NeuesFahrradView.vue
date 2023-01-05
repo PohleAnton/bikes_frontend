@@ -59,7 +59,7 @@
   <div>
     <h4>Bild:</h4>
     <input v-on="bildUrl" type="file" @change="onFileSelected">
-    <button @click="onUpload">Hochladen</button>
+    <!-- <button @click="onUpload">Hochladen</button> -->
     <p></p>
   </div>
   <div>
