@@ -1,7 +1,7 @@
 import App from '../../src/App'
 import { mount } from '@vue/test-utils'
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView'
+
 import VerkaufView from '@/views/VerkaufView'
 
 
@@ -17,10 +17,10 @@ describe('App', ()=>{
         component: VerkaufView
       }]
     })
-
-    // navigate to route
-    router.push('/verkauf')
     await router.isReady()
+    // navigate to route
+    await router.push('/verkauf')
+
     // mount the App
     const wrapper = mount(App, {
       global: {
