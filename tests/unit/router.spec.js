@@ -19,7 +19,7 @@ describe('App', ()=>{
     })
 
     // navigate to route
-    await router.push('/verkauf')
+
 
     // mount the App
     const wrapper = mount(App, {
@@ -27,6 +27,7 @@ describe('App', ()=>{
         plugins: [router]
       }
     })
+    await router.push('/verkauf')
 
     // if the About route exists
     // the routing was successful
