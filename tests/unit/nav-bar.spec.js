@@ -1,23 +1,39 @@
 import Navbar from '@/components/Navbar'
 import {store} from '@/assets/store'
 import { mount, flushPromises } from '@vue/test-utils'
-
-import BikeCardList from '@/components/BikeCardList'
-import HomeView from '@/views/HomeView'
-import VerkaufView from '@/views/VerkaufView'
+import { shallowMount } from '@vue/test-utils'
+import Vue from 'vue'
 
 describe('Testing Navbar.vue', () => {
-
-
-  it('calls logout() on button click', () => {
-    const wrapper = mount(VerkaufView,
-      {
-        data(){
-          store.log=true
-        }
+  const $route={
+    fullpath: 'http://localhost:8081/'
+  }
+  const wrapper = shallowMount(Navbar,
+    {
+      data(){
+        store.log=true
+      },
+      mocks:{
+        $route
       }
-    )
-    expect(wrapper.text()).toMatch('Melden Sie sich bitte an')  })
+    }
+  )
+
+
+  it('calls logout() on button click "Logout"', async () => {
+    const logoutbutton = wrapper.find('#myud')
+    const spy = jest.spyOn(wrapper.vm, 'logout')
+    logoutbutton.trigger('click')
+    await wrapper.vm.$nextTick()
+    expect(spy).toHaveBeenCalled()
+
+
+
+})
+
+it('tests routing', done =>{
+  Vue.use(VueRouter)
+})
 
 })
 

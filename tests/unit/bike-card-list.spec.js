@@ -24,7 +24,8 @@ describe('Testing BikeCardList.vue', () => {
             ],
             password: '$2a$10$7/h0hrk5sJllc3xg3SxauOsHTbu3YVJTRPN4O1CmlAUcVax4R9yjq'
           },
-          bildUrl: 'https://images.internetstores.de/products/1484117/02/e77f98/cube-cargo-sport-hybrid-500-275-flashwhitenblack-1.jpg?forceSize=true&forceAspectRatio=true&useTrim=true&size=300x300',
+          //pending; waiting for implementation
+          // bildUrl: 'https://images.internetstores.de/products/1484117/02/e77f98/cube-cargo-sport-hybrid-500-275-flashwhitenblack-1.jpg?forceSize=true&forceAspectRatio=true&useTrim=true&size=300x300',
           kurzeBeschreibung: 'Der reinste Berlit',
           langeBeschreibung: 'adgöhsdflkghsdogjsdfökgölsdfhjg'
         },
@@ -45,7 +46,8 @@ describe('Testing BikeCardList.vue', () => {
             ],
             password: '$2a$10$7/h0hrk5sJllc3xg3SxauOsHTbu3YVJTRPN4O1CmlAUcVax4R9yjq'
           },
-          bildUrl: 'https://images.internetstores.de/products/1484117/02/e77f98/cube-cargo-sport-hybrid-500-275-flashwhitenblack-1.jpg?forceSize=true&forceAspectRatio=true&useTrim=true&size=300x300',
+          //pending; waiting for implementation
+          //bildUrl: 'https://images.internetstores.de/products/1484117/02/e77f98/cube-cargo-sport-hybrid-500-275-flashwhitenblack-1.jpg?forceSize=true&forceAspectRatio=true&useTrim=true&size=300x300',
           kurzeBeschreibung: 'Der reinste Berlit',
           langeBeschreibung: 'adgöhsdflkghsdogjsdfökgölsdfhjg'
         }
@@ -54,7 +56,7 @@ describe('Testing BikeCardList.vue', () => {
     })
 
     // then
-    const personCards = wrapper.findAllComponents(BikeCard)
-    expect(personCards.length).toBe(2)
+    const bikeCards = wrapper.findAllComponents(BikeCard)
+    expect(bikeCards.length).toBe(2)
   })
 })

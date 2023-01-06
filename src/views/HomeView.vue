@@ -9,15 +9,17 @@
     </button>
   </div>
   <div v-if="store.log">
-  <h1>{{ message}}</h1>
+  <h1>{{message}}</h1>
+
   </div>
   <img alt="Vue logo" src="../assets/fahrrad_icon2.png" style="width:200px;height:200px;">
   <div>
-    <input v-model="filterCrit" placeholder = "nach Beschreibung suchen">
+    <input v-model="search" placeholder = "nach Beschreibung suchen">
     <p></p>
   </div>
   <div class="container-fluid">
 <div>
+
 <bike-card-list  :bikes="this.bikes"></bike-card-list>
 </div>
 
@@ -39,14 +41,16 @@ import Navbar from '@/components/Navbar';
 
 export default {
   name: 'HomeView',
-  methods:{
-    myFilterFunc (crit){
-      return this.bikes.filter (
-        it => crit.length < 1 ||
-          it.kurzeBeschreibung.toLowerCase().includes(crit.toLowerCase())
-      )
-    }
-  },
+methods:{
+  myfilterFunction(crit){
+    return this.bikes.filter (
+      it => crit.length < 1 ||
+        it.kurzeBeschreibung.toLowerCase().includes(crit.toLowerCase())
+    )
+  }
+},
+  //v-for="bike in myFilterFunction(search)" :key="bike.id"
+
   setup(){
     const message=ref('Sie sind nicht eingeloggt');
     onMounted(async ()=>{
@@ -55,6 +59,7 @@ export default {
         if (response.status !==400) {
           store.log=true;
           message.value=`Hi ${response.data.firstName}`
+
         }
         console.log(response.data);
       }
@@ -76,7 +81,8 @@ export default {
     return {
       bikes: [],
       users:[],
-      myFilterFunc:''
+      search:'',
+      user:Object
     }
   },
   async created() {

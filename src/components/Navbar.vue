@@ -23,11 +23,11 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <router-link class="nav-link" to="/">Home</router-link>
-          <router-link class="nav-link"  to="/verkauf">Verkauf</router-link>
-          <router-link class="nav-link"  to="/hilfe">Hilfe</router-link>
+          <router-link class="nav-link" to="/" @click="this.$forceUpdate">Home</router-link>
+          <router-link class="nav-link"  to="/verkauf" @click="this.$forceUpdate">Verkauf</router-link>
+          <router-link class="nav-link"  to="/hilfe" @click="this.$forceUpdate">Hilfe</router-link>
         </ul>
-        <router-link to="/" class="btn btn-outline-light me-2"  @click="logout(); this.$forceUpdate()">Logout</router-link>
+        <router-link to="/" class="btn btn-outline-light me-2" id="myud"  @click="logout(); this.$forceUpdate()">Logout</router-link>
       </div>
     </div>
 
@@ -72,5 +72,7 @@ export default {
 </script>
 
 <style scoped>
+
+
 
 </style>

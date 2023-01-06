@@ -4,7 +4,7 @@ import {store} from '@/assets/store'
 let refresh=false;
 axios.interceptors.response.use(resp => resp, async error => {
 
-  if (error.response.status === 400&&!refresh){
+  if (error.response.status === 400){
     const response = await axios.post('http://localhost:8080/api/refresh', {}, {withCredentials:true});
     refresh=true;
     if (response.status ===200){

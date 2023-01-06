@@ -6,7 +6,7 @@
     <p class="card-text">{{bike.kategorie}} {{bike.farbe}}
       <router-link class="nav-link" to="/einkauf/fahrrad">
 
-        <button type="button" @click="store.eigId=bike.eigentuemer.id; store.bike=bike" class="btn btn-primary" >Angebot ansehen</button>
+        <button type="button" @click="store.user=bike.eigentuemer; store.bike=bike" class="btn btn-primary" >Angebot ansehen</button>
       </router-link>
     </p>
 

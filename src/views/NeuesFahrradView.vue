@@ -73,7 +73,7 @@
     <p></p>
   </div>
   <div>
-    <button type="button" @click="save();this.$forceUpdate()">Speichern</button>
+    <button type="button"  @click="save();this.$forceUpdate()">Speichern</button>
   </div>
   <p>
     ° = obligatorisch
@@ -118,7 +118,8 @@ export default {
       bildUrl:'',
       kurzbeschreibung:'',
       langbeschreibung:'',
-      selectedFile: null
+      selectedFile: null,
+
     }
   },
   methods: {

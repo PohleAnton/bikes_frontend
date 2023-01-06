@@ -13,7 +13,7 @@
   eine lange Beschreibung geben, dann könnte man die speziell auf dieser Seite anzeigen. Wider meinte außerdem in der
   Vorlesung, dass es für Input Control Zusatzpunkte gibt - vielleicht kann man beim anlegne die Zeichenzahl für die kurze
   Beschreibung einschränken?-->
-  <a :href="'mailto:' +eigentuemer.mailaddress +'?subject=deine Anzeige auf BikeBay: &quot ' + bike.kurzeBeschreibung + '&quot'">
+  <a  :href="'mailto:' +eigentuemer.mailaddress +'?subject=deine Anzeige auf BikeBay: &quot ' + bike.kurzeBeschreibung + '&quot'">
   <button class="btn btn-primary">Kontakt aufnehmen</button>
   </a>
   <p>Hier könnte die ausführliche Beschreibung stehen: {{bike.langeBeschreibung}}</p>
@@ -45,11 +45,10 @@ data() {
     };
 
     this.bike = store.bike;
+    this.eigentuemer=store.user;
 
 
-    fetch('http://localhost:8080/api/user/' + store.eigId, requestOptions)
-      .then(response => response.json()).then(response => this.eigentuemer = response)
-      .catch(error => console.log('error', error));
+
   }
 }
 </script>

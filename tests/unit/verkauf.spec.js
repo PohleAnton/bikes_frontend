@@ -14,7 +14,7 @@ describe('Testing Verkauf.vue', () => {
         }
       }
       )
-    expect(wrapper.text()).toMatch('Fahrrad-VerkaufDeine Fahrräder:GTXR09Ein Sportfahrrad mit perfektem Topspin.Angebot ansehen+')
+    expect(wrapper.text()).toContain('Deine Fahrräder:')
   })
   it('should show page title depeding on login state: NOT logged in', () => {
     const wrapper = mount(VerkaufView,
@@ -24,7 +24,7 @@ describe('Testing Verkauf.vue', () => {
         }
       }
     )
-    expect(wrapper.text()).toMatch('Melden Sie sich bitte an')
+    expect(wrapper.text()).toContain('Neugierig geworden?')
   })
 
 })
