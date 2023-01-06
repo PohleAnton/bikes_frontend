@@ -13,7 +13,7 @@ import Vue from 'vue'
       }})
     const logoutbutton = wrapper.find('#myud')
     const spy = jest.spyOn(wrapper.vm, 'logout')
-    logoutbutton.trigger('click')
+    await logoutbutton.trigger('click')
     await wrapper.vm.$nextTick()
     expect(spy).toHaveBeenCalled()
 
