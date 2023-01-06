@@ -17,7 +17,7 @@ describe('App', ()=>{
         component: VerkaufView
       }]
     })
-    await router.isReady()
+
     // navigate to route
     await router.push('/verkauf')
 
