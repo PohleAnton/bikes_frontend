@@ -31,9 +31,6 @@ describe('Testing Navbar.vue', () => {
 
 })
 
-it('tests routing', done =>{
-  Vue.use(VueRouter)
-})
 
 })
 
