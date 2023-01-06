@@ -62,7 +62,7 @@ export default {
         axios.defaults.headers.common['Authorization'] = `Bearer ${response.data}`
         store.log = false;
       }).catch(function (error) {
-     
+        console.log(error);
       });
     }
     return{
