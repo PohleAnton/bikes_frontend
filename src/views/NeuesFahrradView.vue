@@ -189,6 +189,10 @@ export default {
 
         const byteFile = await getAsByteArray(this.selectedFile)
 
+        this.selectedFile = String.fromCharCode(event.target.files[0])
+
+        console.log(this.selectedFile )
+
       }
     }
     /*onUpload() {
