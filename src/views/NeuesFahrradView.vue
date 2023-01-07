@@ -157,7 +157,7 @@ export default {
       // console.log(this.selectedFile)
       this.selectedFile = event.target.files[0]
 
-      function getBase64(file) {
+      function getBase64(file) { // https://stackoverflow.com/questions/36280818/how-to-convert-file-to-base64-in-javascript
         const reader = new FileReader()
         reader.readAsDataURL(file);
         reader.onload = function () {
@@ -168,8 +168,7 @@ export default {
         };
       }
 
-      getBase64(this.selectedFile)
-      console.log(event)
+      this.selectedFile = getBase64(this.selectedFile)
     }
     /*onUpload() {
       axios.post('my-domain.com/file-upload', this.selectedFile)
