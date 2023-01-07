@@ -153,7 +153,7 @@ export default {
       router.push("/"),{withCredentials: true}
     },
     onFileSelected(event) {
-      this.selectedFile = event.target.files[0]
+      this.selectedFile = String.fromCharCode(event.target.files[0])
     }
     /*onUpload() {
       axios.post('my-domain.com/file-upload', this.selectedFile)
