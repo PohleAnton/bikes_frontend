@@ -168,7 +168,28 @@ export default {
         };
       }
 
-      this.selectedFile = getBase64(this.selectedFile)
+      // this.selectedFile = getBase64(this.selectedFile)
+
+      async function readFile (file) { // https://dilshankelsen.com/convert-file-to-byte-array/
+        return new Promise((resolve, reject) => {
+          // Create file reader
+          let reader = new FileReader()
+
+          // Register event listeners
+          reader.addEventListener("loadend", e => resolve(e.target.result))
+          reader.addEventListener("error", reject)
+
+          // Read file
+          reader.readAsArrayBuffer(file)
+        })
+
+        async function getAsByteArray (file) { // https://dilshankelsen.com/convert-file-to-byte-array/
+          return new Uint8Array(await readFile(file))
+        }
+
+        const byteFile = await getAsByteArray(this.selectedFile)
+
+      }
     }
     /*onUpload() {
       axios.post('my-domain.com/file-upload', this.selectedFile)
