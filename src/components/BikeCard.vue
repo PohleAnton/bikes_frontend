@@ -1,6 +1,7 @@
 <template>
 <div class="card h-auto">
   <!-- <img :src="bike.bildUrl" class="card-img-top" :alt="bike.id"> -->
+
   <div class="card-body">
     <h5 class="card-title"> {{bike.kurzeBeschreibung}}</h5>
     <p class="card-text">{{bike.kategorie}} {{bike.farbe}}

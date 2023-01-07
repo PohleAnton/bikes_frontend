@@ -153,12 +153,30 @@ export default {
       router.push("/"),{withCredentials: true}
     },
     onFileSelected(event) {
-      this.selectedFile = String.fromCharCode(event.target.files[0])
+      // this.selectedFile = String.fromCharCode(event.target.files[0])
+      // console.log(this.selectedFile)
+      this.selectedFile = event.target.files[0]
+
+      function getBase64(file) {
+        const reader = new FileReader()
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+          console.log(reader.result);
+        };
+        reader.onerror = function (error) {
+          console.log('Error: ', error);
+        };
+      }
+
+      getBase64(this.selectedFile)
+      console.log(event)
     }
     /*onUpload() {
       axios.post('my-domain.com/file-upload', this.selectedFile)
     }*/
+
   }
+
 }
 </script>
 
