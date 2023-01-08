@@ -15,7 +15,7 @@
     <h1>Fahrrad-Verkauf</h1>#
       <h2>Deine Bikes:</h2>
       <div v-for="bike in filterBikes(store.user.id)" :key="bike.id">
-        <div class="card" style="width: 18rem; float:left;">
+        <div class="card" style="width:270px;height:455px; float:left;">
           <img src="../assets/fahrrad_icon.png" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ bike.kurzeBeschreibung }}</h5>
@@ -54,7 +54,7 @@ export default {
       auth:Boolean,
       bikes:[],
      store,
-      filter:''
+
     }
   },
   methods:{
