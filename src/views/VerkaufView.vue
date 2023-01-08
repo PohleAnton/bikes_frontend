@@ -20,7 +20,9 @@
           <div class="card-body">
             <h5 class="card-title">{{ bike.kurzeBeschreibung }}</h5>
             <p class="card-text">{{bike.kategorie}} {{bike.farbe}}</p>
+            <router-link class="nav-link" to="/">
             <button type="button"  class="btn btn-primary" @click="erase(bike.id),this.$forceUpdate()" >Bike löschen</button>
+            </router-link>
           </div>
         </div>
       </div>
