@@ -46,8 +46,7 @@ knappe Betreffzeile werden automatisch eingetragen. Die weitere Transaktion obli
 Ferner findet sich in der Navigationsleiste die Option "Verkauf" - diese ist ebenfalls nur für eingeloggte User zugänglich
 Ist man eingeloggt, sieht man dort alle eigenen Fahrraeder auf der Plattform - und einen Button, um diese zu löschen
 (etwa falls das Fahrrad verkauft wurde). Außerdem hat man hier die Option, ein neues Fahrrad einzustellen: Über das leere
-Feld mit dem "+" gelangt man in eine neue Ansicht. Dort hat man einige Dropdownmenues, ein einige freie Feldeingaben
-###sowie die Möglichkeit, ein Bild hochzuladen
+Feld mit dem "+" gelangt man in eine neue Ansicht. Dort hat man einige Dropdownmenues sowie einige freie Feldeingaben
 Pflichtfelder sind entsprechend markiert. Sind alle Pflichtfelder ausgefüllt, kann das Fahrrad über den Buttun "speichen"
 angelegt werden und der User gelangt zurück zur Startseite, wo er sogleich sein neues Fahrrad sieht.
 

@@ -6,7 +6,7 @@ import { mount } from '@vue/test-utils'
 
 describe('Testing Verkauf.vue', () => {
 
-  it('should show page title depeding on login state: logged in', () => {
+  it('should show page title depending on login state: logged in', () => {
     const wrapper = mount(VerkaufView,
       {
         data(){
@@ -16,7 +16,7 @@ describe('Testing Verkauf.vue', () => {
       )
     expect(wrapper.text()).toContain('Deine Bikes:')
   })
-  it('should show page title depeding on login state: NOT logged in', () => {
+  it('should show page title depending on login state: NOT logged in', () => {
     const wrapper = mount(VerkaufView,
       {
         data(){
