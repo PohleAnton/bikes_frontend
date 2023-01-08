@@ -63,8 +63,8 @@
     <p></p>
   </div>
   <div>
-    <h4>Kurzbeschreibung:</h4>
-    <input v-model = "kurzbeschreibung" placeholder = "kurzbeschreibung" type = "text" ref="nameInput">
+    <h4>Kurzbeschreibung°:</h4>
+    <input v-model = "kurzbeschreibung" required placeholder = "kurzbeschreibung" type = "text" ref="nameInput">
     <p></p>
   </div>
   <div>
