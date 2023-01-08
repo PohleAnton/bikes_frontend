@@ -9,6 +9,7 @@
   </div>
   <div v-if="store.log">
   <h3>Hi {{store.user.username}} </h3>
+    <img :src=getImage() class="card-img-top" alt="..." style="width:300px;height:300px;">
     <h4>Hier nochmal ein paar mehr Details:</h4>
    <p>Der Eigentümer ist {{eigentuemer.username}}</p>
     <p>Er hat einen Preis von {{bike.price}} Euro veranschlagt - du weißt ja, wie das läuft</p>
@@ -50,6 +51,21 @@ data() {
 
 
 
+  },
+  methods: {
+    getImage() { // https://stackoverflow.com/questions/40491506/vue-js-dynamic-images-not-working
+      switch(this.bike.farbe) {
+        case "SCHWARZ": return require('../assets/fahrrad_icon_schwarz.png')
+        case "GRAU": return require('../assets/fahrrad_icon_grau.png')
+        case "WEISS": return require('../assets/fahrrad_icon_weiss.png')
+        case "ROT": return require('../assets/fahrrad_icon_rot.png')
+        case "BLAU": return require('../assets/fahrrad_icon_blau.png')
+        case "GRUEN": return require('../assets/fahrrad_icon_gruen.png')
+        case "SONSTIGE": return require('../assets/fahrrad_icon_sonstige.png')
+        case "MIXED": return require('../assets/fahrrad_icon.png')
+      }
+      return require('../assets/fahrrad_icon.png')
+    }
   }
 }
 </script>
