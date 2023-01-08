@@ -4,7 +4,7 @@ import bikeCard from '@/components/BikeCard'
 
 
 describe('Testing BikeCard.vue', () => {
-  it('should display \"kurzeBeschreibubg\"', () => {
+  it('should display \"kurzeBeschreibung\"', () => {
     // when
     const wrapper = mount(bikeCard, {
       propsData: {
@@ -33,7 +33,7 @@ describe('Testing BikeCard.vue', () => {
 
     // then
     const cardTitle = wrapper.find('.card-title')
-    expect(cardTitle.text()).toBe('Der reinste Berlit')
+    expect(cardTitle.text()).toBe('\"Der reinste Berlit\"')
   })
 
 
