@@ -8,16 +8,16 @@
     </button>
   </div>
   <div v-if="store.log">
-  <p>Das ausgewaehlte Fahrrad ist: {{bike.id}} </p>
-<!--  das öffnet den Standard Email Client und setzt in den Betreff die kurze Beschreibung ein. Ich werde dem Bike mal doch
-  eine lange Beschreibung geben, dann könnte man die speziell auf dieser Seite anzeigen. Wider meinte außerdem in der
-  Vorlesung, dass es für Input Control Zusatzpunkte gibt - vielleicht kann man beim anlegne die Zeichenzahl für die kurze
-  Beschreibung einschränken?-->
+  <h3>Hi {{store.user.username}} </h3>
+    <h4>Hier nochmal ein paar mehr Details:</h4>
+   <p>Der Eigentümer ist {{eigentuemer.username}}</p>
+    <p>Er hat einen Preis von {{bike.price}} Euro veranschlagt - du weißt ja, wie das läuft</p>
+  <p>Hier noch eine ausführlichere Beschreibung: {{bike.langeBeschreibung}}</p>
+
+<h5>Interesse? Dann nimm Kontakt auf:</h5>
   <a  :href="'mailto:' +eigentuemer.mailaddress +'?subject=deine Anzeige auf BikeBay: &quot ' + bike.kurzeBeschreibung + '&quot'">
   <button class="btn btn-primary">Kontakt aufnehmen</button>
   </a>
-  <p>Hier könnte die ausführliche Beschreibung stehen: {{bike.langeBeschreibung}}</p>
-  <p>Jetzt muss sich nur noch "irgendjemand" um das Design kümmern...</p>
 
 
   </div>
@@ -34,7 +34,8 @@ data() {
     return {
       bike: Object,
       eigentuemer: Object,
-      store
+      store,
+      url:"https://imgur.com/gallery/ZYDoLwD"
     }
   },
   mounted () {
