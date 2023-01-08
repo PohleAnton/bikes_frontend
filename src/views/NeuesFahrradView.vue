@@ -119,7 +119,7 @@ export default {
       kurzbeschreibung:'',
       langbeschreibung:'',
       selectedFile: null,
-
+      base64string: ''
     }
   },
   methods: {
@@ -131,7 +131,7 @@ export default {
         farbe: this.farbe,
         price: this.preis,
         eigentuemerId: store.eigId,
-        bildUrl: this.selectedFile,
+        bildUrl: this.base64string,
         kurzeBeschreibung: this.kurzbeschreibung,
         langeBeschreibung: this.langbeschreibung
       }
@@ -153,9 +153,19 @@ export default {
       router.push("/"),{withCredentials: true}
     },
     onFileSelected(event) {
-      // this.selectedFile = String.fromCharCode(event.target.files[0])
-      // console.log(this.selectedFile)
+
       this.selectedFile = event.target.files[0]
+
+      /*
+      const reader = new FileReader();
+      reader.readAsDataURL(this.selectedFile);
+      reader.onloadend = () => {
+          const base64data = reader.result;
+          this.selectedFile = base64data;
+      }
+      */
+
+
 
       function getBase64(file) { // https://stackoverflow.com/questions/36280818/how-to-convert-file-to-base64-in-javascript
         const reader = new FileReader()
@@ -168,8 +178,10 @@ export default {
         };
       }
 
-      // this.selectedFile = getBase64(this.selectedFile)
+      this.base64string = getBase64(this.selectedFile)
 
+      // this.selectedFile = getBase64(this.selectedFile)
+/*
       async function readFile (file) { // https://dilshankelsen.com/convert-file-to-byte-array/
         return new Promise((resolve, reject) => {
           // Create file reader
@@ -190,18 +202,18 @@ export default {
         const byteFile = await getAsByteArray(this.selectedFile)
 
         this.selectedFile = String.fromCharCode(event.target.files[0])
+*/
+        // console.log(this.selectedFile )
 
-        console.log(this.selectedFile )
-
-      }
     }
+  }
     /*onUpload() {
       axios.post('my-domain.com/file-upload', this.selectedFile)
     }*/
 
-  }
-
 }
+
+
 </script>
 
 <style scoped>
