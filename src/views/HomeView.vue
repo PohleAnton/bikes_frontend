@@ -97,6 +97,7 @@ methods:{
         this.bikes.push(bike)
       }))
       .catch(error => console.log('error', error));
+    store.bikes=this.bikes
     fetch('http://localhost:8080/api/user', requestOptions)
       .then(response => response.json())
       .then(result =>result.forEach(user=>{

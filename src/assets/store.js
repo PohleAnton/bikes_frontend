@@ -5,6 +5,7 @@ export const store = reactive ({
   eigId: 0,
   bike:Object,
   log:false,
-  user:Object
+  user:Object,
+  bikes:[]
 
 })
