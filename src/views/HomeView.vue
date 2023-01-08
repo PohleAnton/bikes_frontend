@@ -104,12 +104,23 @@ methods:{
       }))
       .catch(error => console.log('error', error));
     store.bikes=this.bikes
-    fetch('http://localhost:8080/api/user', requestOptions)
-      .then(response => response.json())
-      .then(result =>result.forEach(user=>{
-        this.users.push(user)
-      }))
-      .catch(error => console.log('error', error));
+    try {
+      const response = await axios.get('http://localhost:8080/api/user');
+      if (response.status !==400) {
+        store.log=true;
+        store.user=response.data
+        message.value=`Hi ${response.data.firstName}`
+
+      }
+      console.log(response.data);
+    }
+    catch (error){
+      console.error(error.response.data)
+      store.log=false;
+      message.value=('Sie sind nicht eingeloggt');
+    }
+  ;
+
   },
 }
 </script>
