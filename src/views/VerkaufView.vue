@@ -14,14 +14,13 @@
     <div >
     <h1>Fahrrad-Verkauf</h1>#
       <h2>Deine Bikes:</h2>
-      <div v-for="bike in bikes" :key="bike.id">
+      <div v-for="bike in filterBikes(store.user.id)" :key="bike.id">
         <div class="card" style="width: 18rem; float:left;">
           <img src="../assets/fahrrad_icon.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">{{ bike.id }}</h5>
-            <p class="card-text">{{ bike.kurzeBeschreibung }}</p>
-            <button type="button"  class="btn btn-primary" @click="erase(bike.id)" >Bike löschen</button>
-
+            <h5 class="card-title">{{ bike.kurzeBeschreibung }}</h5>
+            <p class="card-text">{{bike.kategorie}} {{bike.farbe}}</p>
+            <button type="button"  class="btn btn-primary" @click="erase(bike.id),this.$forceUpdate()" >Bike löschen</button>
           </div>
         </div>
       </div>
@@ -41,17 +40,23 @@
 <script>
 
 import {store} from '@/assets/store'
-import router from '@/router'
+
+import { markRaw } from 'vue'
+
+
+
 export default {
   name: 'VerkaufView',
   data() {
     return {
       auth:Boolean,
       bikes:[],
-     store
+     store,
+      filter:''
     }
   },
   methods:{
+
     erase(id){
       const requestOptions = {
         method: 'DELETE',
@@ -60,9 +65,13 @@ export default {
       fetch('http://localhost:8080/api/v1/fahrrad/'+ id,requestOptions)
          .catch(error => console.log('error')
         )
-      router.push("/")
-
+    },
+    filterBikes(filter){
+      return this.bikes.filter(
+        it =>it.eigentuemer.id===filter
+      )
     }
+
 
   },
   mounted () {

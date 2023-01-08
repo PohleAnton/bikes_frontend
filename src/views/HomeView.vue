@@ -58,6 +58,7 @@ methods:{
         const response = await axios.get('http://localhost:8080/api/user');
         if (response.status !==400) {
           store.log=true;
+          store.user=response.data
           message.value=`Hi ${response.data.firstName}`
 
         }
