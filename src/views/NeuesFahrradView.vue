@@ -57,12 +57,6 @@
     <p></p>
   </div>
   <div>
-    <h4>Bild:</h4>
-    <input v-on="bildUrl" type="file" @change="onFileSelected">
-    <!-- <button @click="onUpload">Hochladen</button> -->
-    <p></p>
-  </div>
-  <div>
     <h4>Kurzbeschreibung°:</h4>
     <input v-model = "kurzbeschreibung" required placeholder = "kurzbeschreibung" type = "text" ref="nameInput">
     <p></p>
@@ -117,13 +111,11 @@ export default {
       preis:'',
       bildUrl:'',
       kurzbeschreibung:'',
-      langbeschreibung:'',
-      selectedFile: null,
-      base64string: ''
+      langbeschreibung:''
     }
   },
   methods: {
-    save() {
+    save () {
       const endpoint = 'http://localhost:8080/api/v1/fahrrad'
       const data = {
         kategorie: this.kategorie,
@@ -141,7 +133,7 @@ export default {
         headers: {
           'Content-Type': 'application/json'
         },
-        body:JSON.stringify(data)
+        body: JSON.stringify(data)
       }
       fetch(endpoint, requestOptions)
         .then(response => response.json())
@@ -150,67 +142,9 @@ export default {
         })
         .catch(error => console.log('error', error)
         )
-      router.push("/"),{withCredentials: true}
-    },
-    onFileSelected(event) {
-
-      this.selectedFile = event.target.files[0]
-
-      /*
-      const reader = new FileReader();
-      reader.readAsDataURL(this.selectedFile);
-      reader.onloadend = () => {
-          const base64data = reader.result;
-          this.selectedFile = base64data;
-      }
-      */
-
-
-
-      function getBase64(file) { // https://stackoverflow.com/questions/36280818/how-to-convert-file-to-base64-in-javascript
-        const reader = new FileReader()
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-          console.log(reader.result);
-        };
-        reader.onerror = function (error) {
-          console.log('Error: ', error);
-        };
-      }
-
-      this.base64string = getBase64(this.selectedFile)
-
-      // this.selectedFile = getBase64(this.selectedFile)
-/*
-      async function readFile (file) { // https://dilshankelsen.com/convert-file-to-byte-array/
-        return new Promise((resolve, reject) => {
-          // Create file reader
-          let reader = new FileReader()
-
-          // Register event listeners
-          reader.addEventListener("loadend", e => resolve(e.target.result))
-          reader.addEventListener("error", reject)
-
-          // Read file
-          reader.readAsArrayBuffer(file)
-        })
-
-        async function getAsByteArray (file) { // https://dilshankelsen.com/convert-file-to-byte-array/
-          return new Uint8Array(await readFile(file))
-        }
-
-        const byteFile = await getAsByteArray(this.selectedFile)
-
-        this.selectedFile = String.fromCharCode(event.target.files[0])
-*/
-        // console.log(this.selectedFile )
-
+      router.push("/"), { withCredentials: true }
     }
   }
-    /*onUpload() {
-      axios.post('my-domain.com/file-upload', this.selectedFile)
-    }*/
-
 }
 
 
