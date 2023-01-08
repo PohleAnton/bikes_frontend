@@ -131,7 +131,7 @@ export default {
         farbe: this.farbe,
         price: this.preis,
         eigentuemerId: store.eigId,
-        bildUrl: this.base64string,
+        bildUrl: this.farbe,
         kurzeBeschreibung: this.kurzbeschreibung,
         langeBeschreibung: this.langbeschreibung
       }

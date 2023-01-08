@@ -1,7 +1,7 @@
 <template>
 <div class="card h-auto">
   <!-- <img :src="bike.bildUrl" class="card-img-top" :alt="bike.id"> -->
-
+  <img :src=getImage() class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title"> "{{bike.kurzeBeschreibung}}"</h5>
     <p class="card-text">Kategorie: {{bike.kategorie}} Farbe:{{bike.farbe}}
@@ -38,6 +38,12 @@ export default {
       var image = new Image();
       image.src = bike.bildUrl;
       document.body.appendChild(image);
+    },
+    getImage() { // https://stackoverflow.com/questions/40491506/vue-js-dynamic-images-not-working
+      switch(this.bike.farbe) {
+        case "BLAU": return require('../assets/fahrrad_icon_schwarz.png')
+      }
+      return require('../assets/fahrrad_icon.png')
     }
   }
 }
